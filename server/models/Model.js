@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-<<<<<<< HEAD
+
 var userSchema = new mongoose.Schema({
 	name: String,
     	password: String,
@@ -50,4 +50,4 @@ mongoose.model('User', UserSchema);
 mongoose.model('Plan', PlanSchema);
 mongoose.model('Todo', TodoSchema);
 mongoose.model('Goal', GoalSchema);
->>>>>>> created and instantiated all the schemas for the database: User, Plan, Todo, Goal
+
