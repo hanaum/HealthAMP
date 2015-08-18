@@ -9,6 +9,7 @@
             templateUrl: 'partials/mainpage.html'
         })
 
+
         .otherwise({
           redirectTo: '/'
         });
