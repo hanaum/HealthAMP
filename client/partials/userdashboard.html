@@ -1,0 +1,25 @@
+<div ng-controller='goalController'>
+
+  <h1>What is your goal?</h1>
+
+  <div ng-repeat=''>
+    <p>
+    <input type="checkbox" ng-model='goal.wieghtloss'/>
+    Weight Loss
+    </p>
+
+    <p>
+    <input type="checkbox" ng-model='goal.cardio'/>
+    Cardio Training
+    </p>
+
+    
+    <p>
+    <input type="checkbox" ng-model='goal.studying'/>
+    Studying for Finals
+    </p>
+
+    <input type="submit" value="Add Goals" ng-click=addGoal() />
+  </div>
+
+</div>
