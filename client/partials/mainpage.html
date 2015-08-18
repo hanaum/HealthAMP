@@ -7,19 +7,40 @@
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#kidneyModal">Kidney</button>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stomachModal">Stomach</button>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#liverModal">Liver</button>
+    <div id="bodypic">
+        <img id="brain" src="../images/brain.png" height="90px" width="110px" x="80" data-toggle="modal" data-target="#brainModal">
+    </div>
+<script type="text/javascript">
+    var svgElement = document.getElementById('brain');
+    svgElement.addEventListener("click", brain);
+    function brain(){
+        alert("EVENT FIRED");
+    }
 
-  <!-- Modal -->
+</script>
+    <a href="/#login">Login and Registration</a>
+    <a href="/#userdashboard">Userdashboard</a>
+
+
     <div class="modal fade" id="brainModal" role="dialog">
         <div class="modal-dialog">
 
-      <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <h2 class="modal-title">Your Brain </h2>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <h4 style="text-decoration: underline; font-weight: bold">A Healthy Brain: </h4>
+                    <p class="modal-vitamins">Vitamin B12, Vitamin E,  and Omega-3 fatty acids.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/blueberries.png"></div>
+                    <p><span><b>Blueberries: </b></span> Research has found that blueberries help protect the brain from oxidative stress and may reduce the effects of age-related conditions such as Alzheimer's disease or dementia. Studies have also shown that diets rich in blueberries significantly improved both learning capacity and motor skills.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/salmon.jpg"></div>
+                    <p><span><b>Wild Salmon: </b></span> Deep-water fish, such as salmon, are rich in omega-3 essential fatty acids, which are essential for brain function. Omega-3s also contain anti-inflammatory substances. Other oily fish that provide the benefits of omega-3s are sardines and herring. Recommended 4-ounce serving, two to three times a week.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/nuts.jpg"></div>
+                    <p><span><b>Nuts and Seeds: </b></span> Nuts and seeds are good sources of vitamin E. Higher levels of vitamin E correspond with less cognitive decline as you get older. Add an ounce a day of walnuts, hazelnuts, Brazil nuts, filberts, almonds, cashews, peanuts, sunflower seeds, sesame seeds, flax seed, and unhydrogenated nut butters such as peanut butter, almond butter, and tahini. Raw or roasted doesn't matter, although if you're on a sodium-restricted diet, eat unsalted nuts.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/avocado.jpg"></div>
+                    <p><span><b>Avocados: </b></span> Avocados are almost as good as blueberries in promoting brainhealth. They contribute to healthy blood flow which promotes a healthy brain. Avocados also lower blood pressure. A lower blood pressure should promote brain health. Avocados are high in calories, however, so add just 1/4 to 1/2 of an avocado to one daily meal as a side dish.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -34,10 +55,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">BLAH BLAH HEART</h4>
+                    <h4 class="modal-title">Your Heart</h4>
                 </div>
                 <div class="modal-body">
-                    <p>heart is blah blah blah</p>
+                    <h4 style="text-decoration: underline; font-weight: bold">A Healthy Heart: </h4>
+                    <p class="modal-vitamins">Omega-3 fatty acids, Vitamin D, Magnesium</p>
+                    <div class="image-div"><img class="modal-image" src="../images/spinach.jpg"></div>
+                    <p><span><b>Spinach: </b></span> Hands down, spinach is the powerhouse of the vegetable kingdom. Its rich, dark color comes from the multiple phytochemicals, vitamins, and minerals (especially folate and iron) that also fight disease, protect against heart disease, and preserve your eyesight.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/oatmeal.jpg"></div>
+                    <p><span><b>Oatmeal: </b></span>Oats are nourishing whole grains and a great source of vitamins, minerals, and cholesterol-lowering fiber. The FDA allows manufacturers of oats to make health claims about the grain on their products, suggesting that a diet high in oats can reduce the risk for heart disease. Research shows oats lower cholesterol levels, keep you regular, and may help prevent certain cancers.</p>
+                    <div class="image-div"><img class="modal-image" src="../images/soy.jpg"></div>
+                    <p><span><b>Soy Protein: </b></span>This inexpensive, high-quality protein contains fiber, vitamins, and minerals -- all the ingredients for a heart-healthy meal. Also, a diet rich in soy protein can lower triglycerides, which help prevent cardiovascular disease and keep your heart strong and healthy. In those with high cholesterol levels, the benefits of soy foods are due to their high levels of polyunsaturated fats, fiber, vitamins, and minerals.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -52,7 +80,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">BLAH BLAH HEART</h4>
+                    <h4 class="modal-title">Your Heart</h4>
                 </div>
                 <div class="modal-body">
                     <p>heart is blah blah blah</p>

@@ -1,0 +1,16 @@
+.modal-title {
+    color: #880000;
+    font-family: Impact, Charcoal, sans-serif;
+}
+.modal-image {
+    height: 100%;
+    width: auto;
+}
+.image-div {
+    height: 200px;
+    width: 300px;
+}
+.modal-vitamins {
+    color: #880000;
+    font-weight: bold;
+}
