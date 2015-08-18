@@ -6,9 +6,9 @@
 
       $routeProvider
         .when('/',{
-            templateUrl: 'partials/login.html'
+            templateUrl: 'partials/mainpage.html'
         })
-        
+
         .otherwise({
           redirectTo: '/'
         });
