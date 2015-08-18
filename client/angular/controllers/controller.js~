@@ -4,7 +4,6 @@ myApp.controller("loginController",function($scope){
 
 myApp.controller("registerController", function($scope, mainFactory){
 	$scope.register = function(){
-		console.log($scope.reg);
 		mainFactory.register($scope.reg);	
 	}
 });

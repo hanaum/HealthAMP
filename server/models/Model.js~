@@ -8,4 +8,4 @@ var userSchema = new mongoose.Schema({
     	Age: Number,
     	Weight: Number
 })
-mongoose.model('User', userSchema);
+mongoose.model('User', Schema);
