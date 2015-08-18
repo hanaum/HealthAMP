@@ -6,8 +6,9 @@
 
       $routeProvider
         .when('/',{
-            templateUrl: 'partials/login.html'
+            templateUrl: 'partials/mainpage.html'
         })
+
         .when('/login',{
             templateUrl: 'partials/login.html'
         })

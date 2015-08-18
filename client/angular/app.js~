@@ -6,9 +6,18 @@
 
       $routeProvider
         .when('/',{
+            templateUrl: 'partials/mainpage.html'
+        })
+<<<<<<< HEAD
+        .when('/login',{
             templateUrl: 'partials/login.html'
         })
-        
+        .when('/register',{
+            templateUrl: 'partials/register.html'
+        })
+=======
+
+>>>>>>> 528a952fb5269bd7f98eb7abc1ad01e42039b66f
         .otherwise({
           redirectTo: '/'
         });
