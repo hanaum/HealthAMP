@@ -8,12 +8,7 @@
         .when('/',{
             templateUrl: 'partials/login.html'
         })
-        .when('/login',{
-            templateUrl: 'partials/login.html'
-        })
-        .when('/register',{
-            templateUrl: 'partials/register.html'
-        })
+        
         .otherwise({
           redirectTo: '/'
         });
