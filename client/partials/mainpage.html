@@ -7,6 +7,27 @@
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#kidneyModal">Kidney</button>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stomachModal">Stomach</button>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#liverModal">Liver</button>
+    <div id="bodypic">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect id="brain" x="70" y="20" height="50" width="100"
+        style=" fill: #FFFFFF"/>
+        brain
+    <text id="braintxt" x="90"  y="50">Brain</text>
+</svg> -->
+        <img id="brain" src="../images/brain.png" height="90px" width="110px" x="80" data-toggle="modal" data-target="#brainModal">
+    </div>
+<script type="text/javascript">
+    var svgElement = document.getElementById('brain');
+    svgElement.addEventListener("click", brain);
+    // var svgElement1 = document.getElementById('braintxt');
+    // svgElement1.addEventListener("click", brain);
+    function brain(){
+        alert("EVENT FIRED");
+    }
+</script>
+    <a href="/#login" >Login and Registration</a>
+
 
   <!-- Modal -->
     <div class="modal fade" id="brainModal" role="dialog">
