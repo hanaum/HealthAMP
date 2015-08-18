@@ -14,7 +14,17 @@ myApp.factory("mainFactory", function($http){
     $http.post('', data).success(function(){
     })
   }
+
+  factory.getOneUser = function() {
+    $http.get('').success(function(){
+    })
+  }
 	
+  factory.getAllUsers = function() {
+    $http.get('').success(function(){
+    })
+  }
+
 	return factory;
 
 });
