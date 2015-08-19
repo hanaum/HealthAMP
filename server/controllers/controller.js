@@ -3,8 +3,10 @@ var genericController = {};
 var User = mongoose.model('User');
 
 genericController.register = function(req,res){
+  console.log('sc', req.body);
 	User.findOne({email: req.body.email}, function(err, results){
-		if(results>0){
+    console.log('sc', results);
+		if(results){
 			res.json({status: 1, message: "Email already taken"});
 		}
 		else{
@@ -14,7 +16,7 @@ genericController.register = function(req,res){
 					console.log(err);
 				}
 				else{
-					res.json({status: 0});
+					res.json({status: 0, message: "Registration was successful! Please sign in!"});
 				}
 			})
 		}
@@ -23,8 +25,8 @@ genericController.register = function(req,res){
 genericController.login = function(req,res){
   // console.log('sc:login', req.body);
 	User.findOne({email: req.body.email}, function(err, results){
-		if(results>0){
-			if(result.password==req.body.password){
+		if(results){
+			if(results.password==req.body.password){
 				res.json({status: 1, results: results});
 			}else{
 				res.json({status: 0, message: "Passwords do not match"});
