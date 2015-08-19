@@ -1,4 +1,4 @@
-3var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var genericController = {};
 var User = mongoose.model('User');
 

@@ -17,10 +17,10 @@
             templateUrl: 'partials/plan.html'
         })
         .when('/userdashboard', {
-            templateUrl: 'partials/userDashboard.html'
+            templateUrl: 'partials/userdashboard.html'
         })
         .when('/globaldashboard', {
-            templateUrl: 'partials/globalDashboard.html'
+            templateUrl: 'partials/globaldashboard.html'
         })
         .when('/logout', {
             templateUrl: 'partials/mainpage.html'
