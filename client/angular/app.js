@@ -13,11 +13,8 @@
         .when('/register',{
             templateUrl: 'partials/register.html'
         })
-        .when('/goal', {
-            templateUrl: 'partials/goal.html'
-        })
-        .when('/todo', {
-            templateUrl: 'partials/todo.html'
+        .when('/plan', {
+            templateUrl: 'partials/plan.html'
         })
         .when('/userDashboard', {
             templateUrl: 'partials/userDashboard.html'
