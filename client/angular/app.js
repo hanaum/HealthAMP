@@ -16,11 +16,11 @@
         .when('/plan', {
             templateUrl: 'partials/plan.html'
         })
-        .when('/userDashboard', {
-            templateUrl: 'partials/userDashboard.html'
+        .when('/userdashboard', {
+            templateUrl: 'partials/userdashboard.html'
         })
-        .when('/globalDashboard', {
-            templateUrl: 'partials/globalDashboard.html'
+        .when('/globaldashboard', {
+            templateUrl: 'partials/globaldashboard.html'
         })
         .when('/logout', {
             templateUrl: 'partials/mainpage.html'
