@@ -1,7 +1,14 @@
-myApp.controller("loginController",function($scope){
-
-	///Stuff goes here
- //added factory methods getOneUser, getAllUsers
+myApp.controller("loginController",function($scope, $location, mainFactory){
+	$scope.login = function(){
+		mainFactory.login($scope.user, function(data){
+      console.log('nc', data);
+			if(data.status===1){
+				$location.path('/userDashboard');
+			} else {
+				$scope.errors = data.message;
+			}
+		})
+	}
 });
 
 myApp.controller("registerController", function($scope, $location, mainFactory){
@@ -13,10 +20,10 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.reg.weight=0;	
 	var errors = 0;
 	var errorlist = [];
-
+	
 	$scope.register = function(){
 		if($scope.reg.age<=10){
-			errors+=1;
+			errors+=1
 			errorlist.push("You must be at least 10 years old to register");
 		}
 		if($scope.reg.name.length<=3){
@@ -37,10 +44,15 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 		}
 		if(errors==0){
 			mainFactory.register($scope.reg, function(data){
-			if(data = 1){
-				$location.path('/login');
-			};
-		})
+				if(data.status!=1){
+					console.log('nc', data);
+					$location.path('/login');
+				}
+				else{
+					console.log('nc', data.message);
+					$scope.errors=data.message;
+				}
+			})
 		}
 		else{
 			$scope.errors = errorlist;
@@ -48,10 +60,11 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 			errors=0;
 		}			
 	}
-		console.log($scope.reg);
-		mainFactory.register($scope.reg);
-  }
 });
+
+myApp.controller("userDashboardController", function($scope, $location, mainFactory){
+
+})
 
 myApp.controller("goalController", function($scope, mainFactory){
   $scope.addGoal = function() {
