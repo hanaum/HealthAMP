@@ -1,7 +1,14 @@
-myApp.controller("loginController",function($scope){
-
-	///Stuff goes here
- //added factory methods getOneUser, getAllUsers
+myApp.controller("loginController",function($scope, $location, mainFactory){
+	$scope.login = function(){
+		mainFactory.login($scope.user, function(data){
+			if(data.status!=1){
+				$location.path('/dashboard');
+			}
+			else{
+				$scope.errors = data.message;
+			}
+		})
+	}
 });
 
 myApp.controller("registerController", function($scope, $location, mainFactory){
@@ -13,7 +20,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.reg.weight=0;	
 	var errors = 0;
 	var errorlist = [];
-
+	
 	$scope.register = function(){
 		if($scope.reg.age<=10){
 			errors+=1;
@@ -37,10 +44,14 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 		}
 		if(errors==0){
 			mainFactory.register($scope.reg, function(data){
-			if(data = 1){
-				$location.path('/login');
-			};
-		})
+				if(data.status!=1){
+					console.log(data);
+					$location.path('/login');
+				}
+				else{
+					$scope.errors=data.message;
+				}
+			})
 		}
 		else{
 			$scope.errors = errorlist;
@@ -48,9 +59,6 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 			errors=0;
 		}			
 	}
-		console.log($scope.reg);
-		mainFactory.register($scope.reg);
-  }
 });
 
 myApp.controller("goalController", function($scope, mainFactory){
