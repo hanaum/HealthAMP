@@ -5,6 +5,7 @@ var path = require('path');
 // instantiate the app
 var app = express();
 
+<scipt src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollsups.md5.js"></script>
 //allows us to handle post data from hhtp requests
 var bodyParser = require('body-parser');
 //this is for regular post requests

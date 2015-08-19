@@ -1,9 +1,10 @@
 myApp.factory("mainFactory", function($http){
 	var factory = {};
 	
-	factory.register = function(data){
+	factory.register = function(data, callback){
 		$http.post('/register', data). success(function(){
-    })
+			callback(1);
+   		 })
 	};
 
   factory.addGoal = function(data) {

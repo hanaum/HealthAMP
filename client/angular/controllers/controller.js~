@@ -15,6 +15,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	var errorlist = [];
 
 	$scope.register = function(){
+<<<<<<< HEAD
 		if($scope.reg.age<=10){
 			errors+=1;
 			errorlist.push("You must be at least 10 years old to register");
@@ -48,9 +49,11 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 			errors=0;
 		}			
 	}
+=======
 		console.log($scope.reg);
 		mainFactory.register($scope.reg);
   }
+>>>>>>> ee29c7bfd40eb19b0603880be50331991c7f8aee
 });
 
 myApp.controller("goalController", function($scope, mainFactory){
