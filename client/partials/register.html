@@ -8,4 +8,6 @@
 		Weight: <input type='number' ng-model='reg.weight'>
 		<input type='submit' value='Submit' ng-click='register()'>
 	</form>
-  <p>{{errors}}</p>
+  <div ng-repeat='error in errors'>
+    <p class='errors'>{{error}}</p>
+  </div>
