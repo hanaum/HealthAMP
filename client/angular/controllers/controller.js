@@ -17,10 +17,10 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.reg.password = "";
         $scope.reg.passwordconfirm="";
 	$scope.reg.age =0;
-	$scope.reg.weight=0;	
+	$scope.reg.weight=0;
 	var errors = 0;
 	var errorlist = [];
-	
+
 	$scope.register = function(){
 		if($scope.reg.age<=10){
 			errors+=1
@@ -58,7 +58,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 			$scope.errors = errorlist;
 			errorlist = [];
 			errors=0;
-		}			
+		}
 	}
 });
 
