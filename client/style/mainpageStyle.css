@@ -14,3 +14,105 @@
     color: #880000;
     font-weight: bold;
 }
+#bodypic {
+            background-image: url(../images/body.jpg);
+            height: 860px;
+            width: 500px;
+            margin: 0px auto;
+        }
+
+        #brain {
+            margin-left: 140px;
+            position: absolute;
+            margin-top: 45px;
+
+        }
+
+
+        #heart {
+            position: absolute;
+            margin-left: 140px;
+            margin-top: 300px;
+        }
+
+        #lkidney {
+            position: absolute;
+            margin-left: 155px;
+            margin-top: 580px;
+        }
+
+        #rkidney {
+            position: absolute;
+            margin-left: 290px;
+            margin-top: 580px;
+        }
+
+        #llungsvg {
+            margin-top: 310px;
+            margin-left: 150px;
+            position: absolute;
+            height: 180px;
+            width: 80px;
+            opacity: 0;
+        }
+
+        #rlungsvg {
+            margin-top: 310px;
+            margin-left: 280px;
+            position: absolute;
+            height: 180px;
+            width: 80px;
+            opacity: 0;
+        }
+
+        #heartsvg {
+            margin-top: 350px;
+            margin-left: 220px;
+            position: absolute;
+            height: 100px;
+            width: 80px;
+            opacity: 0;
+        }
+
+        #stomachpic {
+            position: absolute;
+            margin-left: 160px;
+            margin-top: 475px;
+
+        }
+
+        #liversvg {
+            margin-top: 477px;
+            margin-left: 165px;
+            position: absolute;
+            height: 60px;
+            width: 100px;
+            opacity: 0;
+        }
+
+
+        #liversvg2 {
+            margin-top: 515px;
+            margin-left: 165px;
+            position: absolute;
+            height: 60px;
+            width: 50px;
+            opacity: 0;
+        }
+
+        #stomachsvg {
+            margin-top: 500px;
+            margin-left: 265px;
+            position: absolute;
+            height: 100px;
+            width: 160px;
+            opacity: 0;
+        }
+        #stomachsvg2 {
+            margin-top: 540px;
+            margin-left: 235px;
+            position: absolute;
+            height: 40px;
+            width: 30px;
+            opacity: 0;
+        }

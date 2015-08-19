@@ -8,7 +8,56 @@
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stomachModal">Stomach</button>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#liverModal">Liver</button>
     <div id="bodypic">
-        <img id="brain" src="../images/brain.png" height="90px" width="110px" x="80" data-toggle="modal" data-target="#brainModal">
+
+        <img data-toggle="modal" data-target="#brainModal" id="brain" src="../images/brain.png" height="120px" width="170px" x="60">
+        <img id="heart" src="../images/hnl.jpg">
+        <img id="stomachpic" src="../images/stomach.jpg">
+        <img data-toggle="modal" data-target="#kidneyModal" id="lkidney" src="../images/lkidney.jpg">
+        <img data-toggle="modal" data-target="#kidneyModal" id="rkidney" src="../images/rkidney.jpg">
+        <!-- <img id="lungs" src="lung.png" > -->
+        <svg id="llungsvg" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect data-toggle="modal" data-target="#lungModal" id="llung" height="160" width="70"
+                style="stroke:#000000; fill: #FFFFFF"/>
+        </svg>
+        <svg id="rlungsvg" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect data-toggle="modal" data-target="#lungModal" id="rlung" height="160" width="70"
+                style="stroke:#000000; fill: #FFFFFF"/>
+        </svg>
+        <svg id="heartsvg" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect data-toggle="modal" data-target="#heartModal" id="heartrect" height="110" width="60"
+                style="stroke:#000000; fill: #FFFFFF"/>
+        </svg>
+        <svg id="liversvg" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+          <rect data-toggle="modal" data-target="#liverModal" id="liver" height="60" width="100"
+                 style="stroke:#000000; fill:#FFFFFF;"/>
+
+        </svg>
+        <svg id="liversvg2" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+          <rect data-toggle="modal" data-target="#liverModal" id="liver2" height="60" width="50"
+                 style="stroke:#000000; fill:#FFFFFF;"/>
+
+        </svg>
+        <svg id="stomachsvg" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+          <rect data-toggle="modal" data-target="#stomachModal" id="stomach" height="80" width="50"
+                 style="stroke:#000000; fill:#FFFFFF;"/>
+
+        </svg>
+        <svg data-toggle="modal" data-target="#stomachModal" id="stomachsvg2" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+          <rect id="stomach2" height="40" width="30"
+                 style="stroke:#000000; fill:#FFFFFF;"/>
+
+        </svg>
     </div>
 <script type="text/javascript">
     var svgElement = document.getElementById('brain');
