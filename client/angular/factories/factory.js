@@ -4,14 +4,21 @@ myApp.factory("mainFactory", function($http){
 	
 	factory.register = function(data, callback){
 		$http.post('/register', data). success(function(output){
+      console.log('nf', output);
 			callback(output);
    		 });
 	};
 	
 	factory.login = function(data, callback){
 		$http.post('/login', data).success(function(output){
-      //if output.status = 1, store current user information in currentUser variable in factory.
-			callback(output);
+      console.log('nf', output);
+      if(output.status==1) {
+        currentUser = output.results;
+        callback(output);
+        // console.log(currentUser);
+      } else {
+        callback(output);
+      }
 		});
 	};
 

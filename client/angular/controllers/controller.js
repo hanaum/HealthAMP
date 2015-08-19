@@ -1,10 +1,10 @@
 myApp.controller("loginController",function($scope, $location, mainFactory){
 	$scope.login = function(){
 		mainFactory.login($scope.user, function(data){
-			if(data.status!=1){
-				$location.path('/dashboard');
-			}
-			else{
+      console.log('nc', data);
+			if(data.status===1){
+				$location.path('/userDashboard');
+			} else {
 				$scope.errors = data.message;
 			}
 		})
@@ -45,10 +45,11 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 		if(errors==0){
 			mainFactory.register($scope.reg, function(data){
 				if(data.status!=1){
-					console.log(data);
+					console.log('nc', data);
 					$location.path('/login');
 				}
 				else{
+					console.log('nc', data.message);
 					$scope.errors=data.message;
 				}
 			})
@@ -60,6 +61,10 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 		}			
 	}
 });
+
+myApp.controller("userDashboardController", function($scope, $location, mainFactory){
+
+})
 
 myApp.controller("goalController", function($scope, mainFactory){
   $scope.addGoal = function() {
