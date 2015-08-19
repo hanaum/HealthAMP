@@ -32,7 +32,7 @@ var PlanSchema = new mongoose.Schema({
 
 var TodoSchema = new mongoose.Schema({
   _plan: {type: Schema.ObjectId, ref: 'Plan'},
-  _goals: {type: Schema.ObjectId, ref: 'Goal'},
+  _goal: {type: Schema.ObjectId, ref: 'Goal'},
   title: String,
   description: String,
   created_at: {type: Date, default: new Date},
