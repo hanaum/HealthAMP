@@ -19,10 +19,10 @@
         .when('/todo', {
             templateUrl: 'partials/todo.html'
         })
-        .when('/userDashboard', {
+        .when('/userdashboard', {
             templateUrl: 'partials/userDashboard.html'
         })
-        .when('/globalDashboard', {
+        .when('/globaldashboard', {
             templateUrl: 'partials/globalDashboard.html'
         })
         .when('/logout', {
