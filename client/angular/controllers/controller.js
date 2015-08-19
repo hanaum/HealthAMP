@@ -23,7 +23,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	
 	$scope.register = function(){
 		if($scope.reg.age<=10){
-			errors+=1;
+			errors+=1
 			errorlist.push("You must be at least 10 years old to register");
 		}
 		if($scope.reg.name.length<=3){
