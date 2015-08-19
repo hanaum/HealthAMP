@@ -49,8 +49,8 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 					$location.path('/login');
 				}
 				else{
-					console.log('nc', data.message);
-					$scope.errors=data.message;
+					console.log('nc email is taken?', data.message);
+					$scope.errors=[data.message];
 				}
 			})
 		}
