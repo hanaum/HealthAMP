@@ -5,10 +5,9 @@
 		Password: <input type='password' ng-model='user.password'>
 		<input type='submit' ng-click='login()'>
 	</form>
-	<p ng-repeat='error in errors'>{{errors}}</p>
-	<p>Not a user? Register here!<p>
-	<a href='#/register'>Register</a>
-	<p>{{errors}}</p>
+    <p>Not a user? Register here!<p>
+    <a href='#/register'>Register</a>
+    <p class='errors'>{{errors}}</p>
 </div>
 
 
