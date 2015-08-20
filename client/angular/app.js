@@ -17,7 +17,6 @@
             templateUrl: 'partials/plan.html'
         })
 
-
         .when('/userDashboard/:id', {
             templateUrl: 'partials/userDashboard.html'
 

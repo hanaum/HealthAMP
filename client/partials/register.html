@@ -1,13 +1,37 @@
-<div ng-controller='registerController'>
-	<form>
-		Name: <input type='text' ng-model='reg.name'>
-		Password: <input type='password' ng-model='reg.password'>
-		Confirm Password: <input type='password' ng-model='reg.passwordconfirm'>
-		Email: <input type='email' ng-model='reg.email'>
-		Age: <input type='number' ng-model='reg.age'>
-		Weight: <input type='number' ng-model='reg.weight'>
-		<input type='submit' value='Submit' ng-click='register()'>
-	</form>
+<div class='container' ng-controller='registerController'>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="white navbar-brand" href="#"> <img class='logo' src='../images/logo.jpg'></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<div id='body'>
+		<div id='transparent'> 
+			<form id='info' class='col-sm-offset-2'>
+				Name: <input type='text' ng-model='reg.name'>
+				Password: <input type='password' ng-model='reg.password'>
+				Confirm Password: <input type='password' ng-model='reg.passwordconfirm'>
+				Email: <input type='email' ng-model='reg.email'>
+				Age: <input type='number' ng-model='reg.age'>
+				Weight: <input type='number' ng-model='reg.weight'>
+				<input type='submit' value='Submit' ng-click='register()'>
+			</form>
+
   <div ng-repeat='error in errors'>
-    <p class='errors'>{{error}}</p>
+    <p class='errors col-sm-offset-2'>{{error}}</p>
   </div>
+		</div>
+	</div>

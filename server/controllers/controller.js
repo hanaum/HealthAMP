@@ -3,6 +3,7 @@ var genericController = {};
 var User = mongoose.model('User');
 var Todo = mongoose.model('Todo');
 var Goal = mongoose.model('Goal');
+var Plan = mongoose.model('Plan');
 
 genericController.register = function(req,res){
   console.log('sc', req.body);
@@ -39,7 +40,26 @@ genericController.login = function(req,res){
 		}
 	})
 }
+genericController.addPlan = function(req, res) {
+    console.log(req.body.user_id);
+    User.findOne({_id: req.body.user_id}, function(err, user) {
+        var plan = new Plan({_user: req.body.user_id, title: req.body.title,
+         description: req.body.description, todo: req.body.plans});
+        plan._user = user._id;
+        user.plans.push(plan);
+        plan.save(function(err) {
+            user.save(function(err, results) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("DATA: ", results)
+                    res.json(results);
+                }
+            })
+        })
 
+    })
+}
 genericController.getOneUser = function(req,res){
 	User.findOne({_id: req.params.id}).populate('plans')
         .exec(function(err, data) {

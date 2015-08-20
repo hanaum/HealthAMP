@@ -23,14 +23,15 @@ myApp.factory("mainFactory", function($http){
 	};
 
 
-  factory.addGoal = function(data) {
+  factory.addGoal = function(data, callback) {
     $http.post('', data).success(function(){
    })
   }
+
   factory.addPlan = function(data, callback) {
     console.log("factory: ", data);
-    // $http.post('/addPlan', data).success(function(){
-    // })
+    $http.post('/addPlan', data).success(function(){
+    })
   }
 
   factory.getOneUser = function(info, callback) {

@@ -1,3 +1,20 @@
 .errors{
   color: red;
 }
+.logo{
+	max-width: 100px;
+}
+#info input{
+	display: block;	
+}
+#body{
+	background-image: url(http://dailyreckoning.com/dr-content/uploads/2013/08/Post_Pic14.jpg);	
+	background-size: 100% 100%; 
+}
+#transparent{
+	padding-top: 60px;
+	height: 500px;
+	background-color: white;
+	opacity: 0.5;
+}
+

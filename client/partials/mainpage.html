@@ -1,9 +1,31 @@
-<div class="container">
-    <h2>Body Parts</h2>
-    <a href="/#login">Login and Registration</a>
+<div ng-controller='loginController' class="container">
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="white navbar-brand" href="#"><img class='logo' src='../images/logo.jpg'></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right thenav">
+		    <li><form>Email: <input type='text' class='black' ng-model='user.email'> Password: <input class='black' type='password' ng-model='user.password'>   <input id='submit' type='submit' ng-click='login()'></form></li>
+              </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
     <!-- <a href="/#plan">Plans</a> -->
   <!-- Trigger the modal with a button -->
   
+	<p ng-repeat='error in errors'>{{error}}</p>
     <a class='col-sm-offset-10' href='#/register'>Not a user? Register here!</a>
   <div id="bodypic">
 	<div ng-init="imgbrain='../images/brain.png'" ng-mouseover="imgbrain='../images/brain2.png'" ng-mouseout="imgbrain='../images/brain.png'">
@@ -74,8 +96,7 @@
     }
 
 </script>
-
-
+<p ng-repeat='error in errors'>{{error}}</p>
 
     <div class="modal fade" id="brainModal" role="dialog">
         <div class="modal-dialog">
