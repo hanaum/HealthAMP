@@ -40,6 +40,19 @@
   cursor: move;
 }
 
+.thenav{
+    margin-top: 10px;
+}
+
+.navbar{
+    background-color: black;
+    color: white;
+}
+#submit{
+    margin-left: 7px;
+    background-color: grey;
+}
+
 
 
 /***  Extra ***/
