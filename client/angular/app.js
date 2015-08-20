@@ -16,8 +16,13 @@
         .when('/plan', {
             templateUrl: 'partials/plan.html'
         })
+<<<<<<< HEAD
         .when('/userdashboard', {
             templateUrl: 'partials/userdashboard.html'
+=======
+        .when('/userDashboard/:id', {
+            templateUrl: 'partials/userDashboard.html'
+>>>>>>> mainpage
         })
         .when('/globaldashboard', {
             templateUrl: 'partials/globaldashboard.html'

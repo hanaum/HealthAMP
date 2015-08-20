@@ -25,9 +25,15 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<h1>Welcome, Sim!</h1>
+<h1>Welcome, {{user.name}}!</h1>
+<p>Your Email: {{user.email}}</p>
+<p>Your Age: {{user.age}}</p>
+<p>Your Weight: {{user.weight}}</p>
+<p>Date Joined: {{user.created_at | date: 'medium'}}</p>
 
-  <a href="#/goal">Add a Plan!</a>
+
+  <a href="/plan">Add a Plan!</a>
+
 
   <h1>Plans</h1>
 

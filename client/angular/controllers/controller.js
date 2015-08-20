@@ -3,7 +3,8 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 		mainFactory.login($scope.user, function(data){
       console.log('nc', data);
 			if(data.status===1){
-				$location.path('/userDashboard');
+				console.log("data: ", data.results._id);
+				$location.path('/userDashboard/' + data.results._id);
 			} else {
 				$scope.errors = data.message;
 			}
@@ -62,8 +63,12 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	}
 });
 
-myApp.controller("userDashboardController", function($scope, $location, mainFactory){
-
+myApp.controller("userDashboardController", function($scope, $location, $routeParams, mainFactory){
+	$scope.user = [];
+	console.log("user id: ", $routeParams);
+	mainFactory.getOneUser($routeParams.id, function(data) {
+        $scope.user = data;
+    })
 })
 
 myApp.controller("goalController", function($scope, mainFactory){
@@ -72,9 +77,9 @@ myApp.controller("goalController", function($scope, mainFactory){
   }
 });
 
-myApp.controller("todoController", function($scope, mainFactory){
-  $scope.addTodo = function() {
-    mainFactory.addTodo($scope.todo);
+myApp.controller("planController", function($scope, $routeParams, mainFactory){
+  $scope.addPlan = function() {
+    mainFactory.addPlan($scope.newPlan);
   }
 });
 
