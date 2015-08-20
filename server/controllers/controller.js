@@ -10,6 +10,7 @@ genericController.register = function(req,res){
 			res.json({status: 1, message: "Email already taken"});
 		}
 		else{
+      var user = new User(req.body);
 			user.save(function(err){
 				if(err){
 					console.log(err);

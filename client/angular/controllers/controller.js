@@ -12,6 +12,18 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 	}
 });
 
+myApp.buildArray = function(name, size) {
+  var i, array = [];
+  for (i = 1; i <= size; i++){
+    array.push({
+      text: name + ' ' + i ,
+      value: i
+    });
+  }
+
+  return array;
+};
+
 myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.reg = {};
 	$scope.reg.name = "";
@@ -63,12 +75,20 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	}
 });
 
-myApp.controller("userDashboardController", function($scope, $location, $routeParams, mainFactory){
-	$scope.user = [];
-	console.log("user id: ", $routeParams);
-	mainFactory.getOneUser($routeParams.id, function(data) {
+
+myApp.controller("userDashboardController", function($scope, $routeParams, $location, mainFactory){
+
+    $scope.user = [];
+    console.log("user id: ", $routeParams);
+    mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
     })
+	  $scope.leftArray = myApp.buildArray('Left', 5);
+	  $scope.rightArray = myApp.buildArray('Right', 5);
+	  $scope.sortableOptions = {
+	    connectWith: '.connectedItemsExample .list'
+	  };
+
 })
 
 myApp.controller("goalController", function($scope, mainFactory){
