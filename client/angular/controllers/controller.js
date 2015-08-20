@@ -87,7 +87,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 
 })
 
-myApp.controller("todoController", function($scope, mainFactory){
+myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     $scope.plan = [];
     $scope.todoList = [];
     $scope.goals = [];
@@ -138,6 +138,16 @@ myApp.controller("todoController", function($scope, mainFactory){
     }
 
     // console.log("TODO LIST", $scope.todoList);
+  }
+  $scope.addPlan = function() {
+    $scope.newPlan.plans = $scope.plan;
+    $scope.newPlan.user_id = $routeParams.id;
+    console.log("newPlan: ", $scope.newPlan);
+
+    mainFactory.addPlan($scope.newPlan, function(data) {
+    })
+    $scope.newPlan = {};
+
   }
 });
 
