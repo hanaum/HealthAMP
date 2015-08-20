@@ -75,21 +75,18 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	}
 });
 
-<<<<<<< HEAD
-myApp.controller("userDashboardController", function($scope, $location, $routeParams, mainFactory){
-	$scope.user = [];
-	console.log("user id: ", $routeParams);
-	mainFactory.getOneUser($routeParams.id, function(data) {
-        $scope.user = data;
-    })
-=======
-myApp.controller("userDashboardController", function($scope, $location, mainFactory){
+myApp.controller("userDashboardController", function($scope, $location, mainFactory, $routeParams){
 	  $scope.leftArray = myApp.buildArray('Left', 5);
 	  $scope.rightArray = myApp.buildArray('Right', 5);
 	  $scope.sortableOptions = {
 	    connectWith: '.connectedItemsExample .list'
 	  };
->>>>>>> sortable
+	  $scope.user = [];
+	console.log("user id: ", $routeParams);
+	mainFactory.getOneUser($routeParams.id, function(data) {
+        $scope.user = data;
+    })
+
 })
 
 myApp.controller("goalController", function($scope, mainFactory){
