@@ -1,4 +1,7 @@
 <div ng-controller="todoController" class="section row connectedItemsExample">
+    <div ng-repeat="goal in goals" id="goalsList" >
+      <p>{{goal.title}}<input type="checkbox" ng-model="isChecked[goal._id].checked" ng-click="updatePlan(goal)"></p>
+    </div>
     <div class="col-sm-offset-2 col-sm-4">
       <ul ui-sortable="sortableOptions" ng-model="plan" class="list">
         <li ng-repeat="item in plan" class="item">{{item.title}}</li>

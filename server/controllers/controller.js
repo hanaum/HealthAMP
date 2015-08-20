@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var genericController = {};
 var User = mongoose.model('User');
 var Todo = mongoose.model('Todo');
+var Goal = mongoose.model('Goal');
 
 genericController.register = function(req,res){
   console.log('sc', req.body);
@@ -38,6 +39,7 @@ genericController.login = function(req,res){
 		}
 	})
 }
+
 genericController.getOneUser = function(req,res){
 	User.findOne({_id: req.params.id}).populate('plans')
         .exec(function(err, data) {
@@ -53,10 +55,19 @@ genericController.getAllTodos = function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log("controller: ", results);
             res.json(results);
         }
     })
+}
+genericController.getAllGoals = function(req, res) {
+    Goal.find({}).populate('todos')
+        .exec(function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(data);
+            }
+        })
 }
 
 module.exports = genericController;
