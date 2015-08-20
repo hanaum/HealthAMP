@@ -83,7 +83,6 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
     })
-
 })
 
 myApp.controller("todoController", function($scope, mainFactory){
