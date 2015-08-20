@@ -83,25 +83,24 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
     })
-	  $scope.leftArray = myApp.buildArray('Left', 5);
-	  $scope.rightArray = myApp.buildArray('Right', 5);
-	  $scope.sortableOptions = {
-	    connectWith: '.connectedItemsExample .list'
-	  };
 
 })
 
-myApp.controller("goalController", function($scope, mainFactory){
-  $scope.addGoal = function() {
-    mainFactory.addGoal($scope.goal);
-  }
+myApp.controller("todoController", function($scope, mainFactory){
+    $scope.plan = [];
+    $scope.todoList = [];
+  $scope.leftArray = myApp.buildArray('Left', 5);
+  $scope.rightArray = myApp.buildArray('Right', 5);
+  $scope.sortableOptions = {
+    connectWith: '.connectedItemsExample .list'
+  };
+  mainFactory.getAllTodos(function(data) {
+    console.log("todos: ", data);
+    $scope.todoList = data;
+  })
 });
 
-myApp.controller("planController", function($scope, $routeParams, mainFactory){
-  $scope.addPlan = function() {
-    mainFactory.addPlan($scope.newPlan);
-  }
-});
+
 
 // myApp.controller("userDashboardController", function($scope, mainFactory){
 //   mainFactory.getOneUser()
