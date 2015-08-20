@@ -84,6 +84,14 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
     })
+    $scope.removeClicked = function(plan) {
+        $scope.remove = plan._id;
+    }
+    //FINISH THIS
+    $scope.removePlan = function(plan) {
+        console.log(plan);
+
+    }
 
 })
 
