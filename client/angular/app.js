@@ -1,6 +1,6 @@
 //this creates the angular application
 //  inject the ngRoute dependency in the module.
-    var myApp = angular.module('myApp', ['ngRoute']);
+    var myApp = angular.module('myApp', ['ngRoute', 'ui.sortable']);
     //  use the config method to set up routing:
     myApp.config(function ($routeProvider) {
       $routeProvider
