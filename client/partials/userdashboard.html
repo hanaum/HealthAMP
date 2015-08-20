@@ -40,13 +40,13 @@
         <td>Action</td>
       </tr>
     </thead>
-    <tbody>
+    <tbody ng-repeat="plan in user.plans">
       <tr>
-        <td>Filler Text 1 - Title!</td>
-        <td>Filler Text 1 - Description!</td>
+        <td>{{plan.title}}</td>
+        <td>{{plan.description}}</td>
         <td><input type="checkbox"> Share </td>
         <td><button class="btn btn-info btn-sm">Edit</button></td>
-        <td><button ng-click="removeClicked()" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#removeModal">Remove</button></td>
+        <td><button ng-click="removeClicked(plan)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#removeModal">Remove</button></td>
       </tr>
     </tbody>
   </table>
@@ -63,7 +63,7 @@
         <p>Are you sure you want to delete this plan?</p>
       </div>
       <div class="modal-footer">
-        <button ng-click="removePlan()" type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+        <button ng-click="removePlan(remove)" type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
     </div>
