@@ -1,12 +1,12 @@
 <div ng-controller="userDashboardController" class="section row connectedItemsExample">
     <div class="col-sm-offset-2 col-sm-4">
       <ul ui-sortable="sortableOptions" ng-model="leftArray" class="list">
-        <li ng-repeat="item in leftArray" class="item">{{item.text}}</li>
+        <li ng-repeat="item in leftArray" class="iteml">{{item.text}}</li>
       </ul>
     </div>
     <div class="col-sm-4">
       <ul ui-sortable="sortableOptions" ng-model="rightArray" class="list">
-        <li ng-repeat="item in rightArray" class="item">{{item.text}}</li>
+        <li ng-repeat="item in rightArray" class="itemr" ng-click="todoInfo()">{{item.text}}</li>
       </ul>
     </div>
   </div>
