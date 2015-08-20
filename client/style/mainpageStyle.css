@@ -2,6 +2,9 @@
     color: #880000;
     font-family: Impact, Charcoal, sans-serif;
 }
+body{
+	background-color: white;
+}
 .modal-image {
     height: 100%;
     width: auto;

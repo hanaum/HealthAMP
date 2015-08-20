@@ -6,7 +6,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 				console.log("data: ", data.results._id);
 				$location.path('/userDashboard/' + data.results._id);
 			} else {
-				$scope.errors = data.message;
+				$scope.errors = [data.message];
 			}
 		})
 	}
