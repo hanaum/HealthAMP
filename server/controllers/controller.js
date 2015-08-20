@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var genericController = {};
 var User = mongoose.model('User');
+var Todo = mongoose.model('Todo');
 
 genericController.register = function(req,res){
   console.log('sc', req.body);
@@ -46,6 +47,16 @@ genericController.getOneUser = function(req,res){
                 res.json(data);
             }
         })
+}
+genericController.getAllTodos = function(req, res) {
+    Todo.find({}, function(err, results) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("controller: ", results);
+            res.json(results);
+        }
+    })
 }
 
 module.exports = genericController;

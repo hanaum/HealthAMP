@@ -13,7 +13,7 @@
         .when('/register',{
             templateUrl: 'partials/register.html'
         })
-        .when('/plan', {
+        .when('/plan/:id', {
             templateUrl: 'partials/plan.html'
         })
 

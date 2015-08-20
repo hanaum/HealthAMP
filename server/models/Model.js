@@ -24,12 +24,16 @@ var PlanSchema = new mongoose.Schema({
 }, {versionKey: false});
 
 var TodoSchema = new mongoose.Schema({
-  _plan: {type: Schema.ObjectId, ref: 'Plan'},
-  _goal: {type: Schema.ObjectId, ref: 'Goal'},
+  // _plan: {type: Schema.ObjectId, ref: 'Plan'},
+  // _goal: {type: Schema.ObjectId, ref: 'Goal'},
   title: String,
   description: String,
-  created_at: {type: Date, default: new Date},
-  updated_at: {type: Date, default: new Date}
+  name: String,
+  serving: String,
+  other: String,
+  vitamins: String
+  // created_at: {type: Date, default: new Date},
+  // updated_at: {type: Date, default: new Date}
 }, {versionKey: false});
 
 var GoalSchema = new mongoose.Schema({
