@@ -111,8 +111,13 @@ myApp.controller("todoController", function($scope, mainFactory){
     console.log($scope.isChecked[goal._id]);
     if($scope.isChecked[goal._id].checked){
         for(todo of $scope.goals[$scope.goals.indexOf(goal)].todos){
-            // console.log(todo);
-            $scope.plan.push(todo);
+            var exists = false;
+            for(i in $scope.plan){
+            	if($scope.plan[i]._id == todo._id)
+            		exists = true;
+            }
+            if(!exists)
+            	$scope.plan.push(todo);
             for(temptodo in $scope.todoList){
                 if($scope.todoList[temptodo]._id == todo._id){
                     $scope.todoList.splice(temptodo,1);
@@ -124,8 +129,13 @@ myApp.controller("todoController", function($scope, mainFactory){
         }
     } else {
         for(todo of $scope.goals[$scope.goals.indexOf(goal)].todos){
-            // console.log(todo);
-            $scope.todoList.push(todo);
+            var exists = false;
+            for(i in $scope.todoList){
+            	if($scope.todoList[i]._id == todo._id)
+            		exists = true;
+            }
+            if(!exists)
+            	$scope.todoList.push(todo);
             for(temptodo in $scope.plan){
                 if($scope.plan[temptodo]._id == todo._id){
                     $scope.plan.splice(temptodo,1);
