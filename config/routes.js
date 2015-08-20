@@ -13,6 +13,10 @@ module.exports = function(app) {
         console.log('sr', req.body)
         users.login(req, res);
     })
+    app.post('/addPlan', function(req, res){
+        console.log('routes', req.body)
+        users.addPlan(req, res);
+    })
     app.get('/getOneUser/:id', function(req, res) {
         console.log("ROUTES : ", req.params.id);
         users.getOneUser(req, res);
@@ -21,7 +25,6 @@ module.exports = function(app) {
         users.getAllTodos(req, res);
     })
     app.get('/getAllGoals', function(req, res) {
-
         users.getAllGoals(req, res);
     })
 }

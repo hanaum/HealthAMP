@@ -87,7 +87,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 
 })
 
-myApp.controller("todoController", function($scope, mainFactory){
+myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     $scope.plan = [];
     $scope.todoList = [];
     $scope.goals = [];
@@ -98,7 +98,7 @@ myApp.controller("todoController", function($scope, mainFactory){
     connectWith: '.connectedItemsExample .list'
   };
   mainFactory.getAllTodos(function(data) {
-    console.log("todos: ", data);
+    // console.log("todos: ", data);
     $scope.todoList = data;
   })
   mainFactory.getAllGoals(function(data) {
@@ -108,7 +108,7 @@ myApp.controller("todoController", function($scope, mainFactory){
 
   $scope.updatePlan = function(goal){
     //console.log($scope.goals.indexOf(id));
-    console.log($scope.isChecked[goal._id]);
+    // console.log($scope.isChecked[goal._id]);
     if($scope.isChecked[goal._id].checked){
         for(todo of $scope.goals[$scope.goals.indexOf(goal)].todos){
             // console.log(todo);
@@ -137,7 +137,17 @@ myApp.controller("todoController", function($scope, mainFactory){
         }
     }
 
-    console.log("TODO LIST", $scope.todoList);
+    // console.log("TODO LIST", $scope.todoList);
+  }
+  $scope.addPlan = function() {
+    $scope.newPlan.plans = $scope.plan;
+    $scope.newPlan.user_id = $routeParams.id;
+    console.log("newPlan: ", $scope.newPlan);
+
+    mainFactory.addPlan($scope.newPlan, function(data) {
+    })
+    $scope.newPlan = {};
+
   }
 });
 
