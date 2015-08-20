@@ -10,7 +10,6 @@ genericController.register = function(req,res){
 			res.json({status: 1, message: "Email already taken"});
 		}
 		else{
-			var user = new User(req.body);
 			user.save(function(err){
 				if(err){
 					console.log(err);
@@ -21,7 +20,7 @@ genericController.register = function(req,res){
 			})
 		}
 	});
-}	
+}
 genericController.login = function(req,res){
   // console.log('sc:login', req.body);
 	User.findOne({email: req.body.email}, function(err, results){
@@ -37,5 +36,15 @@ genericController.login = function(req,res){
 		}
 	})
 }
-	
+genericController.getOneUser = function(req,res){
+	User.findOne({_id: req.params.id}).populate('plans')
+        .exec(function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(data);
+            }
+        })
+}
+
 module.exports = genericController;

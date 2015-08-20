@@ -9,8 +9,12 @@ module.exports = function(app) {
 		users.register(req,res);
 	});
 
-  app.post('/login', function(req, res){
-    console.log('sr', req.body)
-    users.login(req, res);
-  })
+    app.post('/login', function(req, res){
+        console.log('sr', req.body)
+        users.login(req, res);
+    })
+    app.get('/getOneUser/:id', function(req, res) {
+        console.log("ROUTES : ", req.params.id);
+        users.getOneUser(req, res);
+    })
 }
