@@ -6,46 +6,55 @@
   <!-- Trigger the modal with a button -->
 
     <div id="bodypic">
-
-        <img data-toggle="modal" data-target="#brainModal" id="brain" src="../images/brain.png" height="120px" width="170px" x="60">
-        <img id="heart" src="../images/hnl.jpg">
-        <img id="stomachpic" src="../images/stomach.jpg">
-        <img data-toggle="modal" data-target="#kidneyModal" id="lkidney" src="../images/lkidney.jpg">
-        <img data-toggle="modal" data-target="#kidneyModal" id="rkidney" src="../images/rkidney.jpg">
+	<div ng-init="imgbrain='../images/brain.png'" ng-mouseover="imgbrain='../images/brain2.png'" ng-mouseout="imgbrain='../images/brain.png'">
+		<img data-toggle="modal" data-target="#brainModal" id="brain" ng-src="{{imgbrain}}" height="120px" width="170px" x="60">
+	</div>
+	<div ng-init="imghnl='../images/hnl.jpg'"> 
+		<img id="heart" src="{{imghnl}}">
+	</div >
+	<div ng-init="imgsto='../images/stomach.jpg'">
+		<img id="stomachpic" src="{{imgsto}}">
+	</div>
+	<div ng-init="imglkid='../images/lkidney.jpg'"  ng-mouseover="imglkid='../images/lkidney2.jpg'" ng-mouseout="imglkid='../images/lkidney.jpg'">
+		<img data-toggle="modal" data-target="#kidneyModal" id="lkidney" src="{{imglkid}}">
+	</div>
+	<div ng-init="imgrkid='../images/rkidney.jpg'"  ng-mouseover="imgrkid='../images/rkidney2.jpg'" ng-mouseout="imgrkid='../images/rkidney.jpg'">
+		<img data-toggle="modal" data-target="#kidneyModal" id="rkidney" src="{{imgrkid}}">
+	</div>
         <!-- <img id="lungs" src="lung.png" > -->
         <svg id="llungsvg" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect data-toggle="modal" data-target="#lungModal" id="llung" height="160" width="70"
+            <rect ng-mouseover="imghnl='../images/hnl2.jpg'" ng-mouseout="imghnl='../images/hnl.jpg'" data-toggle="modal" data-target="#lungModal" id="llung" height="160" width="70"
                 style="stroke:#000000; fill: #FFFFFF"/>
         </svg>
-        <svg id="rlungsvg" xmlns="http://www.w3.org/2000/svg"
+        <svg ng-mouseover="imghnl='../images/hnl2.jpg'" ng-mouseout="imghnl='../images/hnl.jpg'" id="rlungsvg" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect data-toggle="modal" data-target="#lungModal" id="rlung" height="160" width="70"
                 style="stroke:#000000; fill: #FFFFFF"/>
         </svg>
-        <svg id="heartsvg" xmlns="http://www.w3.org/2000/svg"
+        <svg ng-mouseover="imghnl='../images/hnl3.jpg'" ng-mouseout="imghnl='../images/hnl.jpg'" id="heartsvg" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect data-toggle="modal" data-target="#heartModal" id="heartrect" height="110" width="60"
                 style="stroke:#000000; fill: #FFFFFF"/>
         </svg>
-        <svg id="liversvg" xmlns="http://www.w3.org/2000/svg"
+        <svg   id="liversvg" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
-          <rect data-toggle="modal" data-target="#liverModal" id="liver" height="60" width="100"
+          <rect ng-mouseover="imgsto='../images/stomach2.jpg'" ng-mouseout="imgsto='../images/stomach.jpg'" data-toggle="modal" data-target="#liverModal" id="liver" height="60" width="100"
                  style="stroke:#000000; fill:#FFFFFF;"/>
 
         </svg>
-        <svg id="liversvg2" xmlns="http://www.w3.org/2000/svg"
+        <svg  ng-mouseover="imgsto='../images/stomach2.jpg'" ng-mouseout="imgsto='../images/stomach.jpg'" id="liversvg2" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
-          <rect data-toggle="modal" data-target="#liverModal" id="liver2" height="60" width="50"
+          <rect  data-toggle="modal" data-target="#liverModal" id="liver2" height="60" width="50"
                  style="stroke:#000000; fill:#FFFFFF;"/>
 
         </svg>
-        <svg id="stomachsvg" xmlns="http://www.w3.org/2000/svg"
+        <svg   id="stomachsvg" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
 
-          <rect data-toggle="modal" data-target="#stomachModal" id="stomach" height="80" width="50"
+          <rect  ng-mouseover="imgsto='../images/stomach3.jpg'" ng-mouseout="imgsto='../images/stomach.jpg'" data-toggle="modal" data-target="#stomachModal" id="stomach" height="80" width="50"
                  style="stroke:#000000; fill:#FFFFFF;"/>
 
         </svg>
