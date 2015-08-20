@@ -25,44 +25,39 @@
 
       
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <style type="text/css">
-        .section {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
 
-.list {
-  border: 1px solid #000;
-  border-radius: 15px;
-  list-style: none outside none;
-  margin: 10px;
-  padding: 10px;
-}
-
-.item {
-  padding: 5px 10px;
-  margin: 5px 0;
-  border: 2px solid #444;
-  border-radius: 5px;
-  background-color: #EA8A8A;
-
-  font-size: 1.1em;
-  font-weight: bold;
-  text-align: center;
-  cursor: move;
-}
-
-
-/***  Extra ***/
-
-.logList {
-  min-height: 200px;
-  border: 5px solid #000;
-  border-radius: 15px;
-}
-      </style>
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="style/planCss.css">
   </head>
   <body>
+
+
+
+  
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="white navbar-brand" href="#">HealthAMP</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right thenav">
+		    <li><form>Email: <input type='text' ng-model='user.email'> Password: <input type='password' ng-model='user.password'>   <input id='submit' type='submit' ng-click='login()'></form></li>
+              </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
 
     <div ng-app='myApp'>
         <div ng-view="">

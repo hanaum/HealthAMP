@@ -7,7 +7,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   age: Number,
   weight: Number,
-  show: Boolean,
+  share: Boolean,
   tracked_weight: Number,
   plans: [{type: Schema.Types.ObjectId, ref: 'Plan'}],
   created_at: {type: Date, default: new Date},
@@ -24,16 +24,21 @@ var PlanSchema = new mongoose.Schema({
 }, {versionKey: false});
 
 var TodoSchema = new mongoose.Schema({
-  _plan: {type: Schema.ObjectId, ref: 'Plan'},
-  _goal: {type: Schema.ObjectId, ref: 'Goal'},
+  // _plan: {type: Schema.ObjectId, ref: 'Plan'},
+  // _goal: {type: Schema.ObjectId, ref: 'Goal'},
   title: String,
   description: String,
-  created_at: {type: Date, default: new Date},
-  updated_at: {type: Date, default: new Date}
+  name: String,
+  serving: String,
+  other: String,
+  vitamins: String
+  // created_at: {type: Date, default: new Date},
+  // updated_at: {type: Date, default: new Date}
 }, {versionKey: false});
 
 var GoalSchema = new mongoose.Schema({
-  todo: [{type: Schema.ObjectId, ref: 'Todo'}],
+  todos: [{type: Schema.ObjectId, ref: 'Todo'}],
+  title: String,
   created_at: {type: Date, default: new Date},
   updated_at: {type: Date, default: new Date}
 }, {versionKey: false});

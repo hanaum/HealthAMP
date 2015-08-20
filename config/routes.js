@@ -17,4 +17,11 @@ module.exports = function(app) {
         console.log("ROUTES : ", req.params.id);
         users.getOneUser(req, res);
     })
+    app.get('/getAllTodos', function(req, res) {
+        users.getAllTodos(req, res);
+    })
+    app.get('/getAllGoals', function(req, res) {
+
+        users.getAllGoals(req, res);
+    })
 }

@@ -27,13 +27,13 @@ myApp.factory("mainFactory", function($http){
     $http.post('', data).success(function(){
    })
   }
-  factory.addPlan = function(data) {
-    $http.post('', data).success(function(){
-    })
+  factory.addPlan = function(data, callback) {
+    console.log("factory: ", data);
+    // $http.post('/addPlan', data).success(function(){
+    // })
   }
 
   factory.getOneUser = function(info, callback) {
-    console.log("factory id: ", info);
     $http.get('/getOneUser/' + info).success(function(output){
       currentUser = output;
       callback(currentUser);
@@ -42,6 +42,17 @@ myApp.factory("mainFactory", function($http){
 
   factory.getAllUsers = function() {
     $http.get('').success(function(){
+    })
+  }
+  factory.getAllTodos = function(callback) {
+    $http.get('/getAllTodos').success(function(output) {
+      callback(output);
+    })
+  }
+  factory.getAllGoals = function(callback) {
+    console.log("HERE");
+    $http.get('/getAllGoals').success(function(output) {
+      callback(output);
     })
   }
 
