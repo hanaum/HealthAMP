@@ -1,4 +1,7 @@
 <div ng-controller="todoController" class="section row connectedItemsExample">
+    <div>
+      <p></p>
+    </div>
     <div ng-repeat="goal in goals" id="goalsList" >
       <p>{{goal.title}}<input type="checkbox" ng-model="isChecked[goal._id].checked" ng-click="updatePlan(goal)"></p>
     </div>
@@ -12,5 +15,5 @@
         <li ng-repeat="item in todoList" value="{{item._id}}" class="item">{{item.title}}</li>
       </ul>
     </div>
-    <button ng-click="">Save</button>
+    <button ng-click="add">Save</button>
   </div>
