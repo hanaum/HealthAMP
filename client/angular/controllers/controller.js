@@ -3,13 +3,26 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 		mainFactory.login($scope.user, function(data){
       console.log('nc', data);
 			if(data.status===1){
-				$location.path('/userDashboard');
+				console.log("data: ", data.results._id);
+				$location.path('/userDashboard/' + data.results._id);
 			} else {
 				$scope.errors = data.message;
 			}
 		})
 	}
 });
+
+myApp.buildArray = function(name, size) {
+  var i, array = [];
+  for (i = 1; i <= size; i++){
+    array.push({
+      text: name + ' ' + i ,
+      value: i
+    });
+  }
+
+  return array;
+};
 
 myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.reg = {};
@@ -62,7 +75,19 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	}
 });
 
-myApp.controller("userDashboardController", function($scope, $location, mainFactory){
+
+myApp.controller("userDashboardController", function($scope, $routeParams, $location, mainFactory){
+
+    $scope.user = [];
+    console.log("user id: ", $routeParams);
+    mainFactory.getOneUser($routeParams.id, function(data) {
+        $scope.user = data;
+    })
+	  $scope.leftArray = myApp.buildArray('Left', 5);
+	  $scope.rightArray = myApp.buildArray('Right', 5);
+	  $scope.sortableOptions = {
+	    connectWith: '.connectedItemsExample .list'
+	  };
 
 })
 
@@ -72,9 +97,9 @@ myApp.controller("goalController", function($scope, mainFactory){
   }
 });
 
-myApp.controller("todoController", function($scope, mainFactory){
-  $scope.addTodo = function() {
-    mainFactory.addTodo($scope.todo);
+myApp.controller("planController", function($scope, $routeParams, mainFactory){
+  $scope.addPlan = function() {
+    mainFactory.addPlan($scope.newPlan);
   }
 });
 

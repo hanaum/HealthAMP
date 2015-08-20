@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   age: Number,
   weight: Number,
+  show: Boolean,
   tracked_weight: Number,
   plans: [{type: Schema.Types.ObjectId, ref: 'Plan'}],
   created_at: {type: Date, default: new Date},

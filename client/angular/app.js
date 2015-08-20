@@ -1,6 +1,6 @@
 //this creates the angular application
 //  inject the ngRoute dependency in the module.
-    var myApp = angular.module('myApp', ['ngRoute']);
+    var myApp = angular.module('myApp', ['ngRoute', 'ui.sortable']);
     //  use the config method to set up routing:
     myApp.config(function ($routeProvider) {
       $routeProvider
@@ -16,8 +16,11 @@
         .when('/plan', {
             templateUrl: 'partials/plan.html'
         })
-        .when('/userdashboard', {
-            templateUrl: 'partials/userdashboard.html'
+
+
+        .when('/userDashboard/:id', {
+            templateUrl: 'partials/userDashboard.html'
+
         })
         .when('/globaldashboard', {
             templateUrl: 'partials/globaldashboard.html'
