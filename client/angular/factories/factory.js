@@ -49,6 +49,12 @@ myApp.factory("mainFactory", function($http){
       callback(output);
     })
   }
+  factory.getAllGoals = function(callback) {
+    console.log("HERE");
+    $http.get('/getAllGoals').success(function(output) {
+      callback(output);
+    })
+  }
 
 	return factory;
 
