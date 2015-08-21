@@ -32,6 +32,7 @@ body{
 
         #information{
           display:inline-block;
+          max-width: 80%;
           margin-top: 180px;
           margin-left: 600px;
           width: 600px;
@@ -39,7 +40,7 @@ body{
         }
 
         #information h3, p{
-          display: inline-block;
+          display: inline;
           margin-left: 10px;
         }
 
