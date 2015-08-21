@@ -1,3 +1,6 @@
-table {
-
+ #userInfo{
+    width: 400px;
+}
+.userInfospec {
+    display: block;
 }

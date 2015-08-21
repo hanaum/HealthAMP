@@ -17,6 +17,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right thenav">
+                <li><a href="#/globaldashboard">Global Dashboard</a></li>
                 <li><button id="loginreg" data-toggle="modal" data-target="#login-modal">Login/Register</button></li>
               </ul>
     </div><!-- /.navbar-collapse -->
@@ -287,10 +288,10 @@
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                 </div>
-                
+
                 <!-- Begin # DIV Form -->
                 <div id="div-forms">
-                
+
                     <!-- Begin # Login Form -->
                     <form id="login-form" ng-controller="loginController">
                         <div class="modal-body">
@@ -312,7 +313,7 @@
                     </form>
                     <!-- End # Login Form -->
                     <!-- End | Lost Password Form -->
-                    
+
                     <!-- Begin | Register Form -->
                     <form id="register-form" style="display:none;" ng-controller="registerController">
                         <div class="modal-body">
@@ -326,7 +327,7 @@
                             <input  class="form-control" type="text" placeholder="E-Mail" required ng-model='reg.email'>
                             <input  class="form-control" type="number" ng-model='reg.age' placeholder="Age" required>
                             <input  class="form-control" type="number" ng-model='reg.weight' placeholder="Weight" required>
-                            
+
                         </div>
                         <div class="modal-footer">
                             <div>
@@ -338,16 +339,16 @@
                         </div>
                     </form>
                     <!-- End | Register Form -->
-                    
+
                 </div>
                 <!-- End # DIV Form -->
-                
+
             </div>
         </div>
     </div>
     <script type="text/javascript">
     $(function() {
-    
+
     var $formLogin = $('#login-form');
     var $formRegister = $('#register-form');
     var $divForms = $('#div-forms');
@@ -383,12 +384,12 @@
         }
         return false;
     });
-    
+
     $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
     $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
     $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
     $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
-    
+
     function modalAnimate ($oldForm, $newForm) {
         var $oldH = $oldForm.height();
         var $newH = $newForm.height();
@@ -399,13 +400,13 @@
             });
         });
     }
-    
+
     function msgFade ($msgId, $msgText) {
         $msgId.fadeOut($msgAnimateTime, function() {
             $(this).text($msgText).fadeIn($msgAnimateTime);
         });
     }
-    
+
     function msgChange($divTag, $iconTag, $textTag, $divClass, $iconClass, $msgText) {
         var $msgOld = $divTag.text();
         msgFade($textTag, $msgText);
