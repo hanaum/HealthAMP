@@ -1,5 +1,5 @@
 .section {
-  margin-top: 30px;
+  
   margin-bottom: 30px;
 }
 
@@ -9,6 +9,9 @@
   list-style: none outside none;
   margin: 10px;
   padding: 10px;
+}
+#plantitle {
+  margin-right: 50px;
 }
 
 .iteml {
@@ -23,6 +26,16 @@
   /*font-weight: bold;*/
   text-align: center;
   cursor: move;
+}
+
+.goals {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.planlabel {
+  font-size: 1.4em;
 }
 
 #global {
@@ -61,10 +74,7 @@
     margin-left: 7px;
     background-color: grey;
 }
-#goalsList{
-  margin-left: 50%;
 
-}
 
 /***  Extra ***/
 

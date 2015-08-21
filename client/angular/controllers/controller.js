@@ -2,9 +2,9 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 	$scope.login = function(){
 
 		mainFactory.login($scope.user, function(data){
-      console.log('nc', data);
+      // console.log('nc', data);
 			if(data.status===1){
-				console.log("data: ", data.results._id);
+				// console.log("data: ", data.results._id);
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 				$location.path('/userDashboard/' + data.results._id);
@@ -62,14 +62,14 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 		if(errors==0){
 			mainFactory.register($scope.reg, function(data){
 				if(data.status!=1){
-					console.log('nc', data);
+					// console.log('nc', data);
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
                     $location.path('/userDashboard/' + data.user._id);
 					
 				}
 				else{
-					console.log('nc email is taken?', data.message);
+					// console.log('nc email is taken?', data.message);
 					$scope.errors=[data.message];
 				}
 			})
@@ -95,7 +95,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     console.log("user id: ", $routeParams);
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
-        console.log("USER", $scope.user);
+        // console.log("USER", $scope.user);
         $scope.changed = {};
         if($scope.user.plans.length == 0){
             $scope.message = "No Plans!";
@@ -105,12 +105,12 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.removeClicked = function(plan) {
         $scope.remove = plan._id;
         $scope.plan._id = plan._id;
-        console.log("REMOVE CLICKED", plan)
+        // console.log("REMOVE CLICKED", plan)
     }
     //FINISH THISgit
     $scope.removePlan = function(plan) {
     	$scope.plan.user = $scope.user._id;
-        console.log("PLAN", $scope.plan);
+        // console.log("PLAN", $scope.plan);
         mainFactory.removePlan($scope.plan, function(data){
         	mainFactory.getOneUser($routeParams.id, function(data) {
 		        $scope.user = data;
@@ -122,7 +122,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.sharePlan = function(plan){
 
     	$scope.changed[plan]._id = plan;
-    	console.log($scope.changed[plan]);
+    	// console.log($scope.changed[plan]);
     	mainFactory.sharePlan($scope.changed[plan], function(data){
     		mainFactory.getOneUser($routeParams.id, function(data) {
 		        $scope.user = data;
@@ -144,6 +144,7 @@ myApp.controller("todoController", function($scope, $location, $routeParams, mai
     $scope.goals = [];
     $scope.todoInfo = [];
     $scope.isChecked = {};
+    $scope.user = "";
   $scope.leftArray = myApp.buildArray('Left', 5);
   $scope.rightArray = myApp.buildArray('Right', 5);
   $scope.sortableOptions = {
@@ -151,6 +152,7 @@ myApp.controller("todoController", function($scope, $location, $routeParams, mai
   };
   mainFactory.getAllTodos(function(data) {
     // console.log("todos: ", data);
+    $scope.user = $routeParams.id;
     $scope.todoList = data;
   })
   mainFactory.getAllGoals(function(data) {
@@ -160,11 +162,13 @@ myApp.controller("todoController", function($scope, $location, $routeParams, mai
   $scope.seeTodoInfo = function(todo) {
     // console.log(todo);
     mainFactory.seeTodoInfo(todo._id, function(data) {
-        console.log("HERERER", data);
+        // console.log("HERERER", data);
         $scope.todoInfo = data;
     })
 
   }
+
+
 
   $scope.updatePlan = function(goal){
     //console.log($scope.goals.indexOf(id));
@@ -238,6 +242,7 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
     $scope.todoList = [];
     $scope.todoInfo = [];
     $scope.neweditPlan = {};
+    $scope.user = $routeParams.id;
     $scope.sortableOptions = {
     connectWith: '.connectedItemsExample .list'
   };
@@ -259,7 +264,7 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
                 }
             }
             $scope.todoList = data;
-            console.log($scope.plan);
+            console.log("PLAN", $scope.plan);
 
 
         })
@@ -272,6 +277,7 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
         })
 
       }
+
     $scope.editPlan = function() {
         $scope.neweditPlan.plans = $scope.plan.todo;
         $scope.neweditPlan._id = $scope.plan._id;
