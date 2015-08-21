@@ -66,7 +66,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
                     $location.path('/userDashboard/' + data.user._id);
-					
+
 				}
 				else{
 					console.log('nc email is taken?', data.message);
@@ -105,7 +105,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
         $scope.remove = plan._id;
         $scope.plan._id = plan._id;
     }
-    //FINISH THISgit
+    //FINISH THIS git
     $scope.removePlan = function(plan) {
     	$scope.plan.user = $scope.user._id;
         console.log($scope.plan);

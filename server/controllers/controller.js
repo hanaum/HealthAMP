@@ -122,10 +122,11 @@ genericController.seeTodoInfo = function(req,res){
     })
 }
 genericController.removePlan = function(req, res){
+    console.log("dsfjdfka: ", req.body);
 	Plan.findOne({_id: req.body._id}, function(err, plan){
 		console.log(plan);
 		for(x in plan.todo){
-			Todo.update({_id: plan.todo[x]}, {$inc: {count: -1}}, function(err, todo){
+			Todo.update({_id: plan.todo[x]._id}, {$inc: {count: -1}}, function(err, todo){
 
 			})
 		}
