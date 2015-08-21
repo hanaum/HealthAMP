@@ -21,7 +21,7 @@
         })
 
         .when('/userDashboard/:id', {
-            templateUrl: 'partials/userDashboard.html'
+            templateUrl: 'partials/userdashboard.html'
 
         })
         .when('/globaldashboard', {
