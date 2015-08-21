@@ -18,7 +18,6 @@ module.exports = function(app) {
         users.getOneUser(req, res);
     })
     app.get('/getOnePlan/:id', function(req, res) {
-        console.log("ROUTES plan : ", req.params.id);
         users.getOnePlan(req, res);
     })
     app.get('/getAllTodos', function(req, res) {
@@ -27,7 +26,10 @@ module.exports = function(app) {
     app.get('/getAllGoals', function(req, res) {
         users.getAllGoals(req, res);
     })
-
+    app.get('/seeTodoInfo/:id', function(req, res) {
+        console.log(req.params.id);
+        users.seeTodoInfo(req, res);
+    })
     app.post('/removePlan', function(req, res){
         users.removePlan(req, res);
     })
@@ -42,5 +44,9 @@ module.exports = function(app) {
 
     app.get('/plans', function(req, res){
         users.getplans(req, res);
+    })
+
+    app.post('/editPlan', function(req,res){
+        users.editplan(req, res);
     })
 }

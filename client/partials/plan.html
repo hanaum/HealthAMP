@@ -9,14 +9,36 @@
     <div class="col-sm-offset-2 col-sm-4">
         <h2>My Plan</h2>
       <ul ui-sortable="sortableOptions" ng-model="plan" class="list">
-        <li ng-repeat="item in plan" class="iteml">{{item.title}}</li>
+        <li ng-repeat="item in plan" class="iteml">{{item.title}}<p><button ng-click="seeTodoInfo(item)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeModal">?</button></p></li>
       </ul>
     </div>
     <div class="col-sm-4">
         <h2>Todos</h2>
       <ul ui-sortable="sortableOptions" ng-model="todoList" class="list">
-        <li ng-repeat="item in todoList" value="{{item._id}}" class="itemr">{{item.title}}</li>
+        <li ng-repeat="item in todoList" value="{{item._id}}" class="itemr">{{item.title}}<button ng-click="seeTodoInfo(item)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeModal">?</button></li>
       </ul>
     </div>
     <button ng-click="addPlan()">Save</button>
-</div>
+
+
+    <div id="seeModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div ng-repeat="info in todoInfo" class="modal-body">
+            <p>{{info.description}}</p>
+            <p>{{info.name}}</p>
+            <p>{{info.other}}</p>
+            <p>{{info.vitamins}}</p>
+            <p>{{info.serving}}</p>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="showTodo(seeTodoInfo)" type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
