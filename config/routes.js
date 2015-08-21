@@ -49,6 +49,7 @@ module.exports = function(app) {
 
     app.get('/userbyemail/:id', function(req,res){
         users.getuserbyemail(req,res);
+    })
 
     app.post('/editPlan', function(req,res){
         users.editplan(req, res);

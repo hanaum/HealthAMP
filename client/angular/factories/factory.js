@@ -110,6 +110,11 @@ myApp.factory("mainFactory", function($http){
     })
   }
 
+  factory.getCurrentUserInfo = function(callback){
+    // console.log('grabbing current user', currentUser);
+    callback(currentUser);
+  }
+
 	return factory;
 
 });
