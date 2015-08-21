@@ -41,10 +41,12 @@
 }
 
 .thenav{
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .navbar{
+  height: 100px;
     background-color: black;
     color: white;
 }
