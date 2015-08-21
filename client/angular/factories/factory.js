@@ -32,7 +32,8 @@ myApp.factory("mainFactory", function($http){
 
   factory.addPlan = function(data, callback) {
     console.log("factory: ", data);
-    $http.post('/addPlan', data).success(function(){
+    $http.post('/addPlan', data).success(function(output){
+      callback(output);
     })
   }
   factory.getUserbyEmail = function(info,callback){
@@ -79,6 +80,7 @@ myApp.factory("mainFactory", function($http){
 
 
   factory.removePlan = function(info, callback){
+    console.log("FACTORY", info);
     $http.post('/removePlan', info).success(function(output){
       callback(output);
     })

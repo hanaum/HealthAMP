@@ -82,12 +82,14 @@ genericController.getOneUser = function(req,res){
                 res.json(data);
             }
         })
+
 }
 genericController.getAllTodos = function(req, res) {
     Todo.find({}, function(err, results) {
         if (err) {
             console.log(err);
         } else {
+        	console.log("ALL TODOS", results);
             res.json(results);
         }
     })
@@ -122,16 +124,24 @@ genericController.seeTodoInfo = function(req,res){
     })
 }
 genericController.removePlan = function(req, res){
+
     console.log("dsfjdfka: ", req.body);
 	Plan.findOne({_id: req.body._id}, function(err, plan){
 		console.log(plan);
 		for(x in plan.todo){
 			Todo.update({_id: plan.todo[x]._id}, {$inc: {count: -1}}, function(err, todo){
 
+	console.log(req.body._id);
+	Plan.findOne({_id: req.body._id}, function(err, plan){
+		console.log(plan);
+		for(x of plan.todo){
+			console.log("IN FOR LOOP", x);
+			Todo.update({_id: x._id}, {$inc: {count: -1}}, function(err, todo){
+
 			})
 		}
 	})
-	Plan.remove({_id: req.body._id}, function(err, plan){
+	Plan.remove({_id: req.body._id}, function(err, p){
 		User.update({_id: req.body.user}, {$pull: {plans : req.body._id}}, function(err, user){
 			console.log("REMOVE PLAN", user);
 		})
