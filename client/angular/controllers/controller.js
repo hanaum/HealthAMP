@@ -136,7 +136,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 
 })
 
-myApp.controller("todoController", function($scope, $routeParams, mainFactory){
+myApp.controller("todoController", function($scope, $location, $routeParams, mainFactory){
     $scope.plan = [];
     $scope.todoList = [];
     $scope.goals = [];
@@ -218,6 +218,8 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     var todos = [];
     for(x in $scope.plan){
     	todos.push($scope.plan[x]._id);
+      // console.log('nc:', $scope.newPlan.user_id, $routeParams.id);
+    $location.path('/userDashboard/'+$routeParams.id);
     }
     mainFactory.updateTodos(todos);
   }
@@ -282,9 +284,14 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
 myApp.controller("globalDashboardController", function($scope, mainFactory) {
   	$scope.todoList = [];
   	$scope.plans = [];
+    $scope.currentUser;
 
     mainFactory.getAllPlans(function(data){
     	$scope.plans = data;
+    })
+
+    mainFactory.getCurrentUserInfo(function(data){
+      $scope.currentUser = data;
     })
 
 
