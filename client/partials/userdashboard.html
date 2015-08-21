@@ -46,10 +46,12 @@
         <td>{{plan.title}}....{{plan._id}}</td>
         <td>{{plan.description}}</td>
 
+
         <td><input type="checkbox"> Share </td>
         <td><button ng-click="editPlan(plan)" class="btn btn-info btn-sm">Edit</button></td>
 
-        <td><input type="checkbox" ng-checked="plan.share" ng-model="shareable[plan._id].checked" ng-click="sharePlan(plan._id)"> Share </td>
+        <td><input type="checkbox" ng-checked="plan.share" ng-model="changed[plan._id].checked" ng-click="sharePlan(plan._id)" ng-init="changed[plan._id].checked = plan.share || false"> Share </td>
+
         <td><button class="btn btn-info btn-sm">Edit</button></td>
 
         <td><button ng-click="removeClicked(plan)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#removeModal">Remove</button></td>
