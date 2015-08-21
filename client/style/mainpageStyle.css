@@ -22,9 +22,24 @@ body{
 }
 #bodypic {
             background-image: url(../images/body.jpg);
-            height: 860px;
+            height: 660px;
             width: 500px;
-            margin: 20px 0px;
+            margin-left: 20px;
+            margin-right: 20px;
+            display:inline-block;
+        }
+
+        #information{
+          display:inline-block;
+          margin-top: 180px;
+          margin-left: 600px;
+          width: 600px;
+          
+        }
+
+        #information h3, p{
+          display: inline-block;
+          margin-left: 10px;
         }
 
         #brain {
