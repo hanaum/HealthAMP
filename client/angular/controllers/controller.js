@@ -87,7 +87,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.removeClicked = function(plan) {
         $scope.remove = plan._id;
     }
-    //FINISH THIS
+    //FINISH THISgit
     $scope.removePlan = function(plan) {
         console.log(plan);
 
