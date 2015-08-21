@@ -77,17 +77,17 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 
 
 myApp.controller("userDashboardController", function($scope, $routeParams, $location, mainFactory){
-	$scope.shareable = {};
+	$scope.changed = {};
     $scope.remove = [];
     $scope.user = [];
     $scope.plan = {};
-    $scope.shareable = {};
+    //$scope.shareable = {};
     // $scope.$apply();
 
     console.log("user id: ", $routeParams);
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
-        $scope.shareable = {};
+        $scope.changed = {};
 
     })
     $scope.removeClicked = function(plan) {
@@ -107,18 +107,15 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     }
 
     $scope.sharePlan = function(plan){
-    	console.log("PLAN" , plan);
-        $scope.shareable = {_id: plan}
-    	console.log($scope.shareable);
-    	console.log($scope.shareable[plan]);
-    	$scope.shareable[plan]._id = plan;
-    	console.log($scope.shareable[plan]);
-    	mainFactory.sharePlan($scope.shareable[plan], function(data){
+
+    	$scope.changed[plan]._id = plan;
+    	console.log($scope.changed[plan]);
+    	mainFactory.sharePlan($scope.changed[plan], function(data){
     		mainFactory.getOneUser($routeParams.id, function(data) {
 		        $scope.user = data;
 		    })
     	})
-    	$scope.shareable = {};
+        
     }
 
 })
