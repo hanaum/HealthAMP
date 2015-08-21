@@ -25,6 +25,9 @@
   cursor: move;
 }
 
+#global {
+  margin-bottom: 50px;
+}
 #noplan {
   text-align: center;
 }

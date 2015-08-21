@@ -95,6 +95,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     console.log("user id: ", $routeParams);
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
+        console.log("USER", $scope.user);
         $scope.changed = {};
         if($scope.user.plans.length == 0){
             $scope.message = "No Plans!";
@@ -104,11 +105,12 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.removeClicked = function(plan) {
         $scope.remove = plan._id;
         $scope.plan._id = plan._id;
+        console.log("REMOVE CLICKED", plan)
     }
     //FINISH THISgit
     $scope.removePlan = function(plan) {
     	$scope.plan.user = $scope.user._id;
-        console.log($scope.plan);
+        console.log("PLAN", $scope.plan);
         mainFactory.removePlan($scope.plan, function(data){
         	mainFactory.getOneUser($routeParams.id, function(data) {
 		        $scope.user = data;
@@ -213,15 +215,18 @@ myApp.controller("todoController", function($scope, $location, $routeParams, mai
     console.log("newPlan: ", $scope.newPlan);
 
     mainFactory.addPlan($scope.newPlan, function(data) {
+        var todos = [];
+        console.log($scope.plan);
+        for(x in $scope.plan){
+            todos.push($scope.plan[x]._id);
+          // console.log('nc:', $scope.newPlan.user_id, $routeParams.id);
+        }
+        $location.path('/userDashboard/'+$routeParams.id);
+        mainFactory.updateTodos(todos);
     })
     $scope.newPlan = {};
-    var todos = [];
-    for(x in $scope.plan){
-    	todos.push($scope.plan[x]._id);
-      // console.log('nc:', $scope.newPlan.user_id, $routeParams.id);
-    $location.path('/userDashboard/'+$routeParams.id);
-    }
-    mainFactory.updateTodos(todos);
+
+
   }
 
 });
@@ -285,92 +290,103 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
   	$scope.todoList = [];
   	$scope.plans = [];
     $scope.currentUser;
+    var data = [];
 
-    mainFactory.getAllPlans(function(data){
-    	$scope.plans = data;
+    mainFactory.getAllPlans(function(plans){
+    	$scope.plans = plans;
+        mainFactory.getAllTodos(function(todos){
+            console.log("DATA", todos);
+            $scope.todoList = todos;
+            for(index in $scope.todoList){
+                data.push({letter: index, title: $scope.todoList[index].title, count: $scope.todoList[index].count});
+            }
+            var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 768 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+    var formatPercent = d3.format("d");
+
+    var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(formatPercent);
+
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<strong>Todo:</strong> <span style='color:red'>" + d.title + "</span>";
+      })
+
+    var svg = d3.select("#global").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.call(tip);
+
+    
+    console.log($scope.todoList);
+    
+    console.log(data);
+
+      x.domain(data.map(function(d) { return d.letter; }));
+      y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Plans");
+
+      svg.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.letter); })
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(d.count); })
+          .attr("height", function(d) { return height - y(d.count); })
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide)
+
+
+    function type(d) {
+      d.count = +d.count;
+      return d;
+    }
+        })
     })
 
     mainFactory.getCurrentUserInfo(function(data){
       $scope.currentUser = data;
     })
 
+    
 
 
-    var margin = {top: 40, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
 
-	var formatPercent = d3.format("d");
-
-	var x = d3.scale.ordinal()
-	    .rangeRoundBands([0, width], .1);
-
-	var y = d3.scale.linear()
-	    .range([height, 0]);
-
-	var xAxis = d3.svg.axis()
-	    .scale(x)
-	    .orient("bottom");
-
-	var yAxis = d3.svg.axis()
-	    .scale(y)
-	    .orient("left")
-	    .tickFormat(formatPercent);
-
-	var tip = d3.tip()
-	  .attr('class', 'd3-tip')
-	  .offset([-10, 0])
-	  .html(function(d) {
-	    return "<strong>Todo:</strong> <span style='color:red'>" + d.title + "</span>";
-	  })
-
-	var svg = d3.select("body").append("svg")
-	    .attr("width", width + margin.left + margin.right)
-	    .attr("height", height + margin.top + margin.bottom)
-	  .append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	svg.call(tip);
-
-	var data = [];
-	for(index in $scope.todoList){
-		data.push({letter: index, title: $scope.todoList[index].title, count: $scope.todoList[index].count});
-	}
-
-	  x.domain(data.map(function(d) { return d.letter; }));
-	  y.domain([0, d3.max(data, function(d) { return d.count; })]);
-
-	  svg.append("g")
-	      .attr("class", "x axis")
-	      .attr("transform", "translate(0," + height + ")")
-	      .call(xAxis);
-
-	  svg.append("g")
-	      .attr("class", "y axis")
-	      .call(yAxis)
-	    .append("text")
-	      .attr("transform", "rotate(-90)")
-	      .attr("y", 6)
-	      .attr("dy", ".71em")
-	      .style("text-anchor", "end")
-	      .text("Plans");
-
-	  svg.selectAll(".bar")
-	      .data(data)
-	    .enter().append("rect")
-	      .attr("class", "bar")
-	      .attr("x", function(d) { return x(d.letter); })
-	      .attr("width", x.rangeBand())
-	      .attr("y", function(d) { return y(d.count); })
-	      .attr("height", function(d) { return height - y(d.count); })
-	      .on('mouseover', tip.show)
-	      .on('mouseout', tip.hide)
-
-
-	function type(d) {
-	  d.count = +d.count;
-	  return d;
-	}
+    
 
 });
 
