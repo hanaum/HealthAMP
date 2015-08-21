@@ -31,6 +31,7 @@ module.exports = function(app) {
         users.seeTodoInfo(req, res);
     })
     app.post('/removePlan', function(req, res){
+        console.log(req.body);
         users.removePlan(req, res);
     })
 
