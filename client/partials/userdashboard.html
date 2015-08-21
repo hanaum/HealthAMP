@@ -40,12 +40,18 @@
         <td>Action</td>
       </tr>
     </thead>
+    <!-- <p ng-bind="shareable.tr"></p> -->
     <tbody ng-repeat="plan in user.plans">
       <tr>
         <td>{{plan.title}}....{{plan._id}}</td>
         <td>{{plan.description}}</td>
+
         <td><input type="checkbox"> Share </td>
         <td><button ng-click="editPlan(plan)" class="btn btn-info btn-sm">Edit</button></td>
+
+        <td><input type="checkbox" ng-checked="plan.share" ng-model="shareable[plan._id].checked" ng-click="sharePlan(plan._id)"> Share </td>
+        <td><button class="btn btn-info btn-sm">Edit</button></td>
+
         <td><button ng-click="removeClicked(plan)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#removeModal">Remove</button></td>
       </tr>
     </tbody>
