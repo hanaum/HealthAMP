@@ -30,22 +30,18 @@
     <input type="text" ng-model='filter_name'>
     <thead>
       <tr>
-        <td>Goals</td>
         <td>Title</td>
         <td>Description</td>
         <td>Start Date</td>
-        <td>End Date</td>
-        <td>Username</td>
+        <td>Name</td>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Temp information - Goals</td>
-        <td>Temp information - Title</td>
-        <td>Temp information - Description</td>
-        <td>Temp information - Start Date</td>
-        <td>Temp information - End Date</td>
-        <td>Temp information - Username</td>
+      <tr ng-repeat="plan in plans ">
+        <td><span ng-bind="plan.title"></span></td>
+        <td><span ng-bind="plan.description"></span></td>
+        <td><span ng-bind="plan.created_at | date:'mediumDate'"></span></td>
+        <td><span ng-bind="plan._user.name"></span></td>
       </tr>
     </tbody>
   </table>

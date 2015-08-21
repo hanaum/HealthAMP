@@ -44,7 +44,7 @@ genericController.addPlan = function(req, res) {
     console.log(req.body.user_id);
     User.findOne({_id: req.body.user_id}, function(err, user) {
         var plan = new Plan({_user: req.body.user_id, title: req.body.title,
-         description: req.body.description, todo: req.body.plans});
+         description: req.body.description, todo: req.body.plans, share: false});
         plan._user = user._id;
         user.plans.push(plan);
         plan.save(function(err) {
@@ -88,6 +88,57 @@ genericController.getAllGoals = function(req, res) {
                 res.json(data);
             }
         })
+}
+
+genericController.removePlan = function(req, res){
+	Plan.findOne({_id: req.body._id}, function(err, plan){
+		console.log(plan);
+		for(x in plan.todo){
+			Todo.update({_id: plan.todo[x]}, {$inc: {count: -1}}, function(err, todo){
+
+			})
+		}
+	})
+	Plan.remove({_id: req.body._id}, function(err, plan){
+		User.update({_id: req.body.user}, {$pull: {plans : req.body._id}}, function(err, user){
+			console.log("REMOVE PLAN", user);
+		})
+	})
+	res.end();
+}
+
+genericController.updateTodos = function(req, res){
+	console.log("UPDATE TODOS", req.body);
+	for(x in req.body){
+		console.log(req.body[x]);
+		
+		Todo.update({_id: req.body[x]}, {$inc: {count: 1}}, function(err, todo){
+			if(err){
+				console.log(err);
+			} else {
+			}
+		})
+	}
+	res.end();
+	
+}
+
+genericController.sharePlan = function(req, res){
+	console.log(req.body);
+	Plan.update({_id: req.body._id}, {share: req.body.checked}, function(err, plan){
+	})
+	res.end();
+}
+
+genericController.getplans = function(req, res){
+	Plan.find({share: true}).populate('_user')
+	.exec(function(err, plans){
+		if(err){
+			console.log(err);
+		} else {
+			res.json(plans);
+		}
+	})
 }
 
 module.exports = genericController;

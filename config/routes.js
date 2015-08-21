@@ -27,4 +27,20 @@ module.exports = function(app) {
     app.get('/getAllGoals', function(req, res) {
         users.getAllGoals(req, res);
     })
+
+    app.post('/removePlan', function(req, res){
+        users.removePlan(req, res);
+    })
+
+    app.post('/updateTodos', function(req, res){
+        users.updateTodos(req, res);
+    })
+
+    app.post('/shareplan', function(req, res){
+        users.sharePlan(req, res);
+    })
+
+    app.get('/plans', function(req, res){
+        users.getplans(req, res);
+    })
 }
