@@ -17,6 +17,7 @@ var UserSchema = new mongoose.Schema({
 var PlanSchema = new mongoose.Schema({
   _user: {type: Schema.ObjectId, ref: 'User'},
   title: String,
+  share: Boolean,
   description: String,
   todo: [{type: Schema.Types.ObjectId, ref: 'Todo'}],
   created_at: {type: Date, default: new Date},
@@ -31,7 +32,8 @@ var TodoSchema = new mongoose.Schema({
   name: String,
   serving: String,
   other: String,
-  vitamins: String
+  vitamins: String,
+  count: Number
   // created_at: {type: Date, default: new Date},
   // updated_at: {type: Date, default: new Date}
 }, {versionKey: false});

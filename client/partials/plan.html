@@ -7,11 +7,13 @@
       <p>{{goal.title}}<input type="checkbox" ng-model="isChecked[goal._id].checked" ng-click="updatePlan(goal)"></p>
     </div>
     <div class="col-sm-offset-2 col-sm-4">
+        <h2>My Plan</h2>
       <ul ui-sortable="sortableOptions" ng-model="plan" class="list">
         <li ng-repeat="item in plan" class="iteml">{{item.title}}</li>
       </ul>
     </div>
     <div class="col-sm-4">
+        <h2>Todos</h2>
       <ul ui-sortable="sortableOptions" ng-model="todoList" class="list">
         <li ng-repeat="item in todoList" value="{{item._id}}" class="itemr">{{item.title}}</li>
       </ul>

@@ -57,6 +57,30 @@ myApp.factory("mainFactory", function($http){
     })
   }
 
+  factory.removePlan = function(info, callback){
+    $http.post('/removePlan', info).success(function(output){
+      callback(output);
+    })
+  }
+
+  factory.updateTodos = function(info){
+    $http.post('/updateTodos', info).success(function(output){
+
+    })
+  }
+
+  factory.sharePlan = function(info, callback){
+    $http.post('/shareplan', info).success(function(output){
+
+    })
+  }
+
+  factory.getAllPlans = function(callback){
+    $http.get('/plans').success(function(output){
+      callback(output);
+    })
+  }
+
 	return factory;
 
 });
