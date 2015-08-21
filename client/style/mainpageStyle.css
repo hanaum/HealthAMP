@@ -24,7 +24,7 @@ body{
             background-image: url(../images/body.jpg);
             height: 860px;
             width: 500px;
-            margin: 0px auto;
+            margin: 20px 0px;
         }
 
         #brain {

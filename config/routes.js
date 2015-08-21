@@ -43,4 +43,8 @@ module.exports = function(app) {
     app.get('/plans', function(req, res){
         users.getplans(req, res);
     })
+
+    app.get('/userbyemail/:id', function(req,res){
+        users.getuserbyemail(req,res);
+    })
 }

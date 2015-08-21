@@ -17,16 +17,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right thenav">
-		    <li><form>Email: <input type='text' class='black' ng-model='user.email'> Password: <input class='black' type='password' ng-model='user.password'>   <input id='submit' type='submit' ng-click='login()'></form></li>
+                <li><button id="loginreg" data-toggle="modal" data-target="#login-modal">Login/Register</button></li>
               </ul>
     </div><!-- /.navbar-collapse -->
+    <a class='col-sm-offset-10' href='#/register'>Not a user? Register here!</a>
   </div><!-- /.container-fluid -->
 </nav>
     <!-- <a href="/#plan">Plans</a> -->
   <!-- Trigger the modal with a button -->
   
 	<p ng-repeat='error in errors'>{{error}}</p>
-    <a class='col-sm-offset-10' href='#/register'>Not a user? Register here!</a>
   <div id="bodypic">
 	<div ng-init="imgbrain='../images/brain.png'" ng-mouseover="imgbrain='../images/brain2.png'" ng-mouseout="imgbrain='../images/brain.png'">
 		<img data-toggle="modal" data-target="#brainModal" id="brain" ng-src="{{imgbrain}}" height="120px" width="170px" x="60">
@@ -99,7 +99,7 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h2 class="modal-title">Your Brain </h2>
                 </div>
                 <div class="modal-body">
@@ -275,7 +275,148 @@
 
         </div>
     </div>
+    <div  class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <img id="img_logo" src="../images/logowhite.jpg">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                
+                    <!-- Begin # Login Form -->
+                    <form id="login-form" ng-controller="loginController">
+                        <div class="modal-body">
+                            <div id="div-login-msg">
+                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-login-msg">Type your email and password.</span>
+                            </div>
+                            <input id="login_username" class="form-control" type="text" placeholder="Email" ng-model='user.email' required>
+                            <input id="login_password" class="form-control" type="password" placeholder="Password" ng-model='user.password' required>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" ng-click='login()' class="btn btn-primary btn-lg btn-block">Login</button>
+                            </div>
+                            <div>
+                                <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                    <!-- End | Lost Password Form -->
+                    
+                    <!-- Begin | Register Form -->
+                    <form id="register-form" style="display:none;" ng-controller="registerController">
+                        <div class="modal-body">
+                            <div id="div-register-msg">
+                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-register-msg">Register an account.</span>
+                            </div>
+                            <input id="register_name" class="form-control" type="text" placeholder="Name" ng-model='reg.name' required>
+                            <input id="register_password" class="form-control" type="password" placeholder="Password" ng-model='reg.password' required>
+                            <input id="register_password" class="form-control" type="password" placeholder="Confirm Password" ng-model='reg.passwordconfirm' required>
+                            <input  class="form-control" type="text" placeholder="E-Mail" required ng-model='reg.email'>
+                            <input  class="form-control" type="number" ng-model='reg.age' placeholder="Age" required>
+                            <input  class="form-control" type="number" ng-model='reg.weight' placeholder="Weight" required>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" ng-click='register()' class="btn btn-primary btn-lg btn-block">Register</button>
+                            </div>
+                            <div>
+                                <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End | Register Form -->
+                    
+                </div>
+                <!-- End # DIV Form -->
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+    
+    var $formLogin = $('#login-form');
+    var $formRegister = $('#register-form');
+    var $divForms = $('#div-forms');
+    var $modalAnimateTime = 300;
+    var $msgAnimateTime = 150;
+    var $msgShowTime = 2000;
 
+    $("form").submit(function () {
+        switch(this.id) {
+            case "login-form":
+                var $lg_username=$('#login_username').val();
+                var $lg_password=$('#login_password').val();
+                if ($lg_username == "ERROR") {
+                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+                } else {
+                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                }
+                return false;
+                break;
+            case "register-form":
+                var $rg_username=$('#register_username').val();
+                var $rg_email=$('#register_email').val();
+                var $rg_password=$('#register_password').val();
+                if ($rg_username == "ERROR") {
+                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
+                } else {
+                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
+                }
+                return false;
+                break;
+            default:
+                return false;
+        }
+        return false;
+    });
+    
+    $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
+    $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
+    $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
+    $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
+    
+    function modalAnimate ($oldForm, $newForm) {
+        var $oldH = $oldForm.height();
+        var $newH = $newForm.height();
+        $divForms.css("height",$oldH);
+        $oldForm.fadeToggle($modalAnimateTime, function(){
+            $divForms.animate({height: $newH}, $modalAnimateTime, function(){
+                $newForm.fadeToggle($modalAnimateTime);
+            });
+        });
+    }
+    
+    function msgFade ($msgId, $msgText) {
+        $msgId.fadeOut($msgAnimateTime, function() {
+            $(this).text($msgText).fadeIn($msgAnimateTime);
+        });
+    }
+    
+    function msgChange($divTag, $iconTag, $textTag, $divClass, $iconClass, $msgText) {
+        var $msgOld = $divTag.text();
+        msgFade($textTag, $msgText);
+        $divTag.addClass($divClass);
+        $iconTag.removeClass("glyphicon-chevron-right");
+        $iconTag.addClass($iconClass + " " + $divClass);
+        setTimeout(function() {
+            msgFade($textTag, $msgOld);
+            $divTag.removeClass($divClass);
+            $iconTag.addClass("glyphicon-chevron-right");
+            $iconTag.removeClass($iconClass + " " + $divClass);
+        }, $msgShowTime);
+    }
+});</script>
 </div>
 
 

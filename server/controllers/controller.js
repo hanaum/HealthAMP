@@ -13,13 +13,13 @@ genericController.register = function(req,res){
 			res.json({status: 1, message: "Email already taken"});
 		}
 		else{
-      var user = new User(req.body);
+      		var user = new User(req.body);
 			user.save(function(err){
 				if(err){
 					console.log(err);
 				}
 				else{
-					res.json({status: 0, message: "Registration was successful! Please sign in!"});
+					res.json({user: user, status: 0});
 				}
 			})
 		}
@@ -59,6 +59,19 @@ genericController.addPlan = function(req, res) {
         })
 
     })
+}
+
+genericController.getuserbyemail = function(req, res){
+	console.log(req.params.id);
+	User.findOne({email: req.params.id}).populate('plans')
+	.exec(function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+			console.log("SERVER BY EMAIL", user);
+			res.json(user);
+		}
+	})
 }
 genericController.getOneUser = function(req,res){
 	User.findOne({_id: req.params.id}).populate('plans')
