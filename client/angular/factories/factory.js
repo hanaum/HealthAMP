@@ -3,7 +3,7 @@ myApp.factory("mainFactory", function($http){
   var currentUser;
 
 	factory.register = function(data, callback){
-		$http.post('/register', data). success(function(output){
+		$http.post('/register', data).success(function(output){
       console.log('nf', output);
 			callback(output);
    		 });
@@ -33,7 +33,12 @@ myApp.factory("mainFactory", function($http){
     $http.post('/addPlan', data).success(function(){
     })
   }
-
+  factory.getUserbyEmail = function(info,callback){
+    $http.get('/userbyemail/'+info).success(function(output){
+      currentUser = output;
+      callback(currentUser);
+    })
+  }
   factory.getOneUser = function(info, callback) {
     $http.get('/getOneUser/' + info).success(function(output){
       currentUser = output;

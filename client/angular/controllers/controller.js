@@ -1,9 +1,12 @@
 myApp.controller("loginController",function($scope, $location, mainFactory){
 	$scope.login = function(){
+
 		mainFactory.login($scope.user, function(data){
       console.log('nc', data);
 			if(data.status===1){
 				console.log("data: ", data.results._id);
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
 				$location.path('/userDashboard/' + data.results._id);
 			} else {
 				$scope.errors = [data.message];
@@ -35,6 +38,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	var errorlist = [];
 
 	$scope.register = function(){
+        console.log($scope.reg);
 		if($scope.reg.age<=10){
 			errors+=1
 			errorlist.push("You must be at least 10 years old to register");
@@ -59,7 +63,10 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 			mainFactory.register($scope.reg, function(data){
 				if(data.status!=1){
 					console.log('nc', data);
-					$location.path('/login');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $location.path('/userDashboard/' + data.user._id);
+					
 				}
 				else{
 					console.log('nc email is taken?', data.message);
@@ -81,6 +88,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.remove = [];
     $scope.user = [];
     $scope.plan = {};
+    $scope.message = '';
     //$scope.shareable = {};
     // $scope.$apply();
 
@@ -88,6 +96,9 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
         $scope.changed = {};
+        if($scope.user.plans.length == 0){
+            $scope.message = "No Plans!";
+        }
 
     })
     $scope.removeClicked = function(plan) {
