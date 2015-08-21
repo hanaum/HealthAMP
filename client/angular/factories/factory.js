@@ -1,6 +1,8 @@
 myApp.factory("mainFactory", function($http){
 	var factory = {};
   var currentUser;
+  var currentPlan;
+  var currentTodo;
 
 	factory.register = function(data, callback){
 		$http.post('/register', data).success(function(output){
@@ -56,15 +58,36 @@ myApp.factory("mainFactory", function($http){
     })
   }
   factory.getAllGoals = function(callback) {
-    console.log("HERE");
     $http.get('/getAllGoals').success(function(output) {
       callback(output);
     })
   }
 
+  factory.getOnePlan = function(info, callback) {
+    $http.get('/getOnePlan/' + info).success(function(output){
+      currentPlan = output;
+      callback(currentPlan);
+    })
+  }
+  factory.seeTodoInfo = function(info, callback) {
+    console.log("klsdfjs: ", info);
+    $http.get('/seeTodoInfo/'+ info).success(function(output){
+      currentTodo = output;
+      callback(currentTodo);
+    })
+  }
+
+
   factory.removePlan = function(info, callback){
     $http.post('/removePlan', info).success(function(output){
       callback(output);
+    })
+  }
+
+  factory.editPlan = function(info, callback){
+    $http.post('/editPlan', info).success(function(output){
+      callback(output);
+
     })
   }
 
@@ -83,6 +106,7 @@ myApp.factory("mainFactory", function($http){
   factory.getAllPlans = function(callback){
     $http.get('/plans').success(function(output){
       callback(output);
+
     })
   }
 

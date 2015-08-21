@@ -16,6 +16,9 @@
         .when('/plan/:id', {
             templateUrl: 'partials/plan.html'
         })
+        .when('/edit/:id', {
+            templateUrl: 'partials/edit.html'
+        })
 
         .when('/userDashboard/:id', {
             templateUrl: 'partials/userDashboard.html'

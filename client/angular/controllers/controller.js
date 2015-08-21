@@ -126,7 +126,12 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 		        $scope.user = data;
 		    })
     	})
-        
+
+    }
+    $scope.editPlan = function(plan) {
+        console.log("polanid: ", plan);
+
+        $location.path('/edit/'+plan._id);
     }
 
 })
@@ -135,6 +140,7 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     $scope.plan = [];
     $scope.todoList = [];
     $scope.goals = [];
+    $scope.todoInfo = [];
     $scope.isChecked = {};
   $scope.leftArray = myApp.buildArray('Left', 5);
   $scope.rightArray = myApp.buildArray('Right', 5);
@@ -149,6 +155,14 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
         //console.log("client controller: ", data);
         $scope.goals = data;
     })
+  $scope.seeTodoInfo = function(todo) {
+    // console.log(todo);
+    mainFactory.seeTodoInfo(todo._id, function(data) {
+        console.log("HERERER", data);
+        $scope.todoInfo = data;
+    })
+
+  }
 
   $scope.updatePlan = function(goal){
     //console.log($scope.goals.indexOf(id));
@@ -207,24 +221,70 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     }
     mainFactory.updateTodos(todos);
   }
+
 });
 
 
 
-// myApp.controller("userDashboardController", function($scope, mainFactory){
-//   mainFactory.getOneUser()
-// });
+myApp.controller("editPlanController", function($scope, $routeParams, $location, mainFactory){
+    $scope.plan = [];
+    $scope.todoList = [];
+    $scope.todoInfo = [];
+    $scope.neweditPlan = {};
+    $scope.sortableOptions = {
+    connectWith: '.connectedItemsExample .list'
+  };
+    mainFactory.getOnePlan($routeParams.id, function(data) {
+        $scope.plan = data;
+        // console.log("PLAN", $scope.plan);
+
+        mainFactory.getAllTodos(function(data) {
+
+            for(var i = data.length - 1; i >= 0; i--){
+                for(y in $scope.plan.todo){
+                    // console.log("TODO", $scope.plan.todo[y]._id);
+                    // console.log("DATA", data[x]._id);
+                    if($scope.plan.todo[y]._id == data[i]._id){
+                        data.splice(i,1);
+                        break;
+                    }
+
+                }
+            }
+            $scope.todoList = data;
+            console.log($scope.plan);
+
+
+        })
+    })
+     $scope.seeTodoInfo = function(todo) {
+    // console.log(todo);
+        mainFactory.seeTodoInfo(todo._id, function(data) {
+            console.log("HERERER", data);
+            $scope.todoInfo = data;
+        })
+
+      }
+    $scope.editPlan = function() {
+        $scope.neweditPlan.plans = $scope.plan.todo;
+        $scope.neweditPlan._id = $scope.plan._id;
+        console.log("asdfklasjf: ", $scope.neweditPlan);
+        console.log("plan: ", $scope.plan);
+         mainFactory.editPlan($scope.neweditPlan, function(data){
+
+            $location.path('/userDashboard/' + $scope.plan._user);
+         })
+    }
+
+
+});
 
 myApp.controller("globalDashboardController", function($scope, mainFactory) {
   	$scope.todoList = [];
   	$scope.plans = [];
-  	mainFactory.getAllTodos(function(data) {
-    // console.log("todos: ", data);
-    $scope.todoList = data;
 
     mainFactory.getAllPlans(function(data){
     	$scope.plans = data;
-    	console.log("GLOBAL CONTROLLER", $scope.plans);
     })
 
 
@@ -232,7 +292,7 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
     var margin = {top: 40, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
- 
+
 	var formatPercent = d3.format("d");
 
 	var x = d3.scale.ordinal()
@@ -304,8 +364,8 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
 	  d.count = +d.count;
 	  return d;
 	}
-	  })
-	});
+
+});
 
 
 // });

@@ -2,8 +2,6 @@ var users= require('./../server/controllers/controller.js');
 
 
 module.exports = function(app) {
-
-
 	app.post('/register', function(req,res){
     // console.log('sr', req.body)
 		users.register(req,res);
@@ -14,12 +12,13 @@ module.exports = function(app) {
         users.login(req, res);
     })
     app.post('/addPlan', function(req, res){
-        console.log('routes', req.body)
         users.addPlan(req, res);
     })
     app.get('/getOneUser/:id', function(req, res) {
-        console.log("ROUTES : ", req.params.id);
         users.getOneUser(req, res);
+    })
+    app.get('/getOnePlan/:id', function(req, res) {
+        users.getOnePlan(req, res);
     })
     app.get('/getAllTodos', function(req, res) {
         users.getAllTodos(req, res);
@@ -27,7 +26,10 @@ module.exports = function(app) {
     app.get('/getAllGoals', function(req, res) {
         users.getAllGoals(req, res);
     })
-
+    app.get('/seeTodoInfo/:id', function(req, res) {
+        console.log(req.params.id);
+        users.seeTodoInfo(req, res);
+    })
     app.post('/removePlan', function(req, res){
         users.removePlan(req, res);
     })
@@ -44,7 +46,12 @@ module.exports = function(app) {
         users.getplans(req, res);
     })
 
+
     app.get('/userbyemail/:id', function(req,res){
         users.getuserbyemail(req,res);
+
+    app.post('/editPlan', function(req,res){
+        users.editplan(req, res);
+
     })
 }

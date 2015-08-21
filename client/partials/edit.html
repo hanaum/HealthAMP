@@ -1,0 +1,41 @@
+<div ng-controller="editPlanController" class="section row connectedItemsExample">
+    <h1>edit</h1>
+    <div>
+      <p>Plan Title: <input type="text" placeholder="{{plan.title}}" ng-model="neweditPlan.title"></p>
+      <p>Plan Description: <input type="text" placeholder="{{plan.description}}" ng-model="neweditPlan.description"></p>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-4">
+      <ul ui-sortable="sortableOptions" ng-model="plan.todo" class="list">
+        <li ng-repeat="todo in plan.todo" class="iteml">{{todo.title}}<p><button ng-click="seeTodoInfo(item)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeModal">?</button></p></li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <ul ui-sortable="sortableOptions" ng-model="todoList" class="list">
+        <li ng-repeat="item in todoList" value="{{item._id}}" class="itemr">{{item.title}}<button ng-click="seeTodoInfo(item)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeModal">?</button>
+        </li>
+      </ul>
+    </div>
+    <button ng-click="editPlan()">Edit</button>
+
+    <div id="seeModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div ng-repeat="info in todoInfo" class="modal-body">
+            <p>{{info.description}}</p>
+            <p>{{info.name}}</p>
+            <p>{{info.other}}</p>
+            <p>{{info.vitamins}}</p>
+            <p>{{info.serving}}</p>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="showTodo(seeTodoInfo)" type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

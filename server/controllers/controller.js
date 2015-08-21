@@ -102,7 +102,25 @@ genericController.getAllGoals = function(req, res) {
             }
         })
 }
-
+genericController.getOnePlan = function(req,res){
+    Plan.findOne({_id: req.params.id}).populate('todo')
+        .exec(function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(data);
+            }
+        })
+}
+genericController.seeTodoInfo = function(req,res){
+    Todo.find({_id: req.params.id}, function(err, results) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(results);
+        }
+    })
+}
 genericController.removePlan = function(req, res){
 	Plan.findOne({_id: req.body._id}, function(err, plan){
 		console.log(plan);
@@ -120,11 +138,27 @@ genericController.removePlan = function(req, res){
 	res.end();
 }
 
+genericController.editplan = function(req, res){
+    console.log("EDIT PLAN", req.body);
+    Plan.findOne({_id: req.body._id}, function(err, plan){
+        plan.title = req.body.title;
+        plan.description = req.body.description;
+        plan.todo = req.body.plans;
+        plan.save(function(err,plan){
+            if(err){
+                console.log(err);
+            } else {
+                res.end();
+            }
+        })
+    })
+}
+
 genericController.updateTodos = function(req, res){
 	console.log("UPDATE TODOS", req.body);
 	for(x in req.body){
 		console.log(req.body[x]);
-		
+
 		Todo.update({_id: req.body[x]}, {$inc: {count: 1}}, function(err, todo){
 			if(err){
 				console.log(err);
@@ -133,7 +167,7 @@ genericController.updateTodos = function(req, res){
 		})
 	}
 	res.end();
-	
+
 }
 
 genericController.sharePlan = function(req, res){
