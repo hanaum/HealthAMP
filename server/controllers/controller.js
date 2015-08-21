@@ -89,5 +89,15 @@ genericController.getAllGoals = function(req, res) {
             }
         })
 }
+genericController.getOnePlan = function(req,res){
+    Plan.findOne({_id: req.params.id}).populate('todo')
+        .exec(function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(data);
+            }
+        })
+}
 
 module.exports = genericController;

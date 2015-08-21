@@ -1,6 +1,7 @@
 myApp.factory("mainFactory", function($http){
 	var factory = {};
   var currentUser;
+  var currentPlan;
 
 	factory.register = function(data, callback){
 		$http.post('/register', data). success(function(output){
@@ -51,9 +52,16 @@ myApp.factory("mainFactory", function($http){
     })
   }
   factory.getAllGoals = function(callback) {
-    console.log("HERE");
     $http.get('/getAllGoals').success(function(output) {
       callback(output);
+    })
+  }
+
+  factory.getOnePlan = function(info, callback) {
+    console.log("klsdfjs: ", info);
+    $http.get('/getOnePlan/' + info).success(function(output){
+      currentPlan = output;
+      callback(currentPlan);
     })
   }
 

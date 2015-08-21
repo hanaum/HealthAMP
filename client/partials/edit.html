@@ -1,4 +1,6 @@
-<div ng-controller="todoController" class="section row connectedItemsExample">
+<div ng-controller="editPlanController">
+    <h1>edit</h1>
+    <p>{{plan}}</p>
     <div>
       <p>Plan Title: <input type="text" ng-model="newPlan.title"></p>
       <p>Plan Description: <input type="text" ng-model="newPlan.description"></p>
@@ -8,7 +10,7 @@
     </div>
     <div class="col-sm-offset-2 col-sm-4">
       <ul ui-sortable="sortableOptions" ng-model="plan" class="list">
-        <li ng-repeat="item in plan" class="iteml">{{item.title}}</li>
+        <li ng-repeat="todo in plan.todo" class="iteml">{{todo.title}}</li>
       </ul>
     </div>
     <div class="col-sm-4">
@@ -16,5 +18,5 @@
         <li ng-repeat="item in todoList" value="{{item._id}}" class="itemr">{{item.title}}</li>
       </ul>
     </div>
-    <button ng-click="addPlan()">Save</button>
+    <button ng-click="editPlan()">Edit</button>
 </div>

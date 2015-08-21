@@ -92,6 +92,11 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
         console.log(plan);
 
     }
+    $scope.editPlan = function(plan) {
+        console.log("polanid: ", plan);
+
+        $location.path('/edit/'+plan._id);
+    }
 
 })
 
@@ -113,6 +118,7 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
         //console.log("client controller: ", data);
         $scope.goals = data;
     })
+
 
   $scope.updatePlan = function(goal){
     //console.log($scope.goals.indexOf(id));
@@ -167,13 +173,17 @@ myApp.controller("todoController", function($scope, $routeParams, mainFactory){
     $scope.newPlan = {};
 
   }
+
 });
 
 
 
-// myApp.controller("userDashboardController", function($scope, mainFactory){
-//   mainFactory.getOneUser()
-// });
+myApp.controller("editPlanController", function($scope, $routeParams, mainFactory){
+    $scope.plan = [];
+    mainFactory.getOnePlan($routeParams.id, function(data) {
+        $scope.plan = data;
+    })
+});
 
 // myApp.controller("globalDashboardController", function($scope, mainFactory) {
 //   mainFactory.getAllUsers()
