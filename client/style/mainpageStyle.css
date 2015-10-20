@@ -22,12 +22,50 @@ body{
 	color:black;
 }
 
+ul li {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+.button:hover #globaldashboard-link.top {
+    background-color: white;
+    color: #990000;
+}
+.button:hover #loginreg-btn.top {
+    background-color: white;
+    color: #990000;
+}
+#main-nav-ul {
+    display: inline-block;
+    margin: 35px 0 0 0;
+}
+#navbar-div {
+    height: 20%;
+}
 #main-nav-bar {
     background-color: black;
-    height: 20%;
+    height: 130px;
 }
 #main-content-div {
     margin-top: 10%;
+}
+#globaldashboard-link {
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+}
+#loginreg-btn {
+    background-color: #33CCFF;
+    border-radius: 3px;
+    border: none;
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: #990000;
+    font-weight: bold;
 }
 #bodypic {
             background-image: url(../images/body.jpg);
