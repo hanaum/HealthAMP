@@ -21,22 +21,29 @@ body{
 .black{
 	color:black;
 }
+#main-nav-bar {
+    background-color: black;
+    height: 20%;
+}
+#main-content-div {
+    margin-top: 10%;
+}
 #bodypic {
             background-image: url(../images/body.jpg);
             height: 660px;
             width: 500px;
-            margin-left: 20px;
+            margin-left: 8%;
             margin-right: 20px;
+
             display:inline-block;
         }
 
         #information{
           display:inline-block;
-          max-width: 80%;
-          margin-top: 180px;
-          margin-left: 600px;
-          width: 600px;
-          
+          width: 40%;
+          vertical-align: middle;
+          margin-top: 10%;
+          margin-left: 5%;
         }
 
         #information h3, p{

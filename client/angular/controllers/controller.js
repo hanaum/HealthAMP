@@ -4,7 +4,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 		mainFactory.login($scope.user, function(data){
       // console.log('nc', data);
 			if(data.status===1){
-				// console.log("data: ", data.results._id);
+				console.log("data: ", data.results._id);
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 				$location.path('/userDashboard/' + data.results._id);
@@ -342,9 +342,9 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
 
     svg.call(tip);
 
-    
+
     console.log($scope.todoList);
-    
+
     console.log(data);
 
       x.domain(data.map(function(d) { return d.letter; }));
@@ -388,11 +388,11 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
       $scope.currentUser = data;
     })
 
-    
 
 
 
-    
+
+
 
 });
 
