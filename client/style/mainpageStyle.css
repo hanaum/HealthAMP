@@ -21,6 +21,7 @@ body{
 .black{
 	color:black;
 }
+
 #main-nav-bar {
     background-color: black;
     height: 20%;
@@ -32,7 +33,7 @@ body{
             background-image: url(../images/body.jpg);
             height: 660px;
             width: 500px;
-            margin-left: 8%;
+            margin-left: 10%;
             margin-right: 20px;
 
             display:inline-block;
@@ -52,7 +53,7 @@ body{
         }
 
         #brain {
-            margin-left: 140px;
+            margin-left: 130px;
             position: absolute;
             margin-top: 45px;
 
@@ -61,25 +62,25 @@ body{
 
         #heart {
             position: absolute;
-            margin-left: 140px;
+            margin-left: 130px;
             margin-top: 300px;
         }
 
         #lkidney {
             position: absolute;
-            margin-left: 155px;
+            margin-left: 145px;
             margin-top: 580px;
         }
 
         #rkidney {
             position: absolute;
-            margin-left: 290px;
+            margin-left: 280px;
             margin-top: 580px;
         }
 
         #llungsvg {
             margin-top: 310px;
-            margin-left: 150px;
+            margin-left: 140px;
             position: absolute;
             height: 180px;
             width: 80px;
@@ -88,7 +89,7 @@ body{
 
         #rlungsvg {
             margin-top: 310px;
-            margin-left: 280px;
+            margin-left: 270px;
             position: absolute;
             height: 180px;
             width: 80px;
@@ -97,7 +98,7 @@ body{
 
         #heartsvg {
             margin-top: 350px;
-            margin-left: 220px;
+            margin-left: 210px;
             position: absolute;
             height: 100px;
             width: 80px;
@@ -106,14 +107,14 @@ body{
 
         #stomachpic {
             position: absolute;
-            margin-left: 160px;
+            margin-left: 150px;
             margin-top: 475px;
 
         }
 
         #liversvg {
             margin-top: 477px;
-            margin-left: 165px;
+            margin-left: 155px;
             position: absolute;
             height: 60px;
             width: 100px;
@@ -132,7 +133,7 @@ body{
 
         #stomachsvg {
             margin-top: 500px;
-            margin-left: 265px;
+            margin-left: 255px;
             position: absolute;
             height: 100px;
             width: 160px;
@@ -140,7 +141,7 @@ body{
         }
         #stomachsvg2 {
             margin-top: 540px;
-            margin-left: 235px;
+            margin-left: 225px;
             position: absolute;
             height: 40px;
             width: 30px;
