@@ -2,14 +2,16 @@
   color: red;
 }
 .logo{
-	max-width: 400px;
+	width: 80%;
+    height: 50px;
+    text-align: left;
 }
 #info input{
-	display: block;	
+	display: block;
 }
 #body{
-	background-image: url(http://dailyreckoning.com/dr-content/uploads/2013/08/Post_Pic14.jpg);	
-	background-size: 100% 100%; 
+	background-image: url(http://dailyreckoning.com/dr-content/uploads/2013/08/Post_Pic14.jpg);
+	background-size: 100% 100%;
 }
 #transparent{
 	padding-top: 60px;
