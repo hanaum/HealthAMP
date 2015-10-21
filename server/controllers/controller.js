@@ -32,7 +32,7 @@ genericController.login = function(req,res){
 			if(results.password==req.body.password){
 				res.json({status: 1, results: results});
 			}else{
-				res.json({status: 0, message: "Passwords do not match"});
+				res.json({status: 0, message: "Email/Password combination does not exist"});
 			}
 		}
 		else{

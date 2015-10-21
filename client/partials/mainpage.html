@@ -298,6 +298,7 @@
                     <!-- Begin # Login Form -->
                     <form id="login-form" ng-controller="loginController">
                         <div class="modal-body">
+                            <p class='errors' ng-repeat="error in errors">{{error}}</p>
                             <div id="div-login-msg">
                                 <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-login-msg">Type your email and password.</span>
@@ -320,6 +321,7 @@
                     <!-- Begin | Register Form -->
                     <form id="register-form" style="display:none;" ng-controller="registerController">
                         <div class="modal-body">
+                            <p class='errors' ng-repeat="error in errors">{{error}}</p>
                             <div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-register-msg">Register an account.</span>
@@ -364,22 +366,12 @@
             case "login-form":
                 var $lg_username=$('#login_username').val();
                 var $lg_password=$('#login_password').val();
-                if ($lg_username == "ERROR") {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
-                } else {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                }
                 return false;
                 break;
             case "register-form":
                 var $rg_username=$('#register_username').val();
                 var $rg_email=$('#register_email').val();
                 var $rg_password=$('#register_password').val();
-                if ($rg_username == "ERROR") {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
-                } else {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
-                }
                 return false;
                 break;
             default:
