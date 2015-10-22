@@ -2,7 +2,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 	$scope.login = function(){
 
 		mainFactory.login($scope.user, function(data){
-      console.log('nc', data);
+      // console.log('nc', data);
 			if(data.status===1){
 				// console.log("data: ", data.results._id);
                 $('body').removeClass('modal-open');
@@ -10,6 +10,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 				$location.path('/userDashboard/' + data.results._id);
 			} else {
 				$scope.errors = [data.message];
+        // console.log($scope.errors);
 			}
 		})
 	}
@@ -70,10 +71,9 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
         console.log("DATA - ", data)
 				if(data.status!=1){
 					// console.log('nc', data);
-                    $('body').removeClass('modal-open');
-                    $('.modal-backdrop').remove();
-                    $location.path('/userDashboard/' + data.user._id);
-
+          $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+          $location.path('/userDashboard/' + data.user._id);
 				}
 				else{
 					// console.log('nc email is taken?', data.message);
@@ -96,10 +96,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     $scope.user = [];
     $scope.plan = {};
     $scope.message = '';
-    //$scope.shareable = {};
-    // $scope.$apply();
 
-    // console.log("user id: ", $routeParams);
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
         console.log("USER", $scope.user);
@@ -146,17 +143,21 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 })
 
 myApp.controller("todoController", function($scope, $location, $routeParams, mainFactory){
-    $scope.plan = [];
-    $scope.todoList = [];
-    $scope.goals = [];
-    $scope.todoInfo = [];
-    $scope.isChecked = {};
-    $scope.user = "";
+  $scope.plan = [];
+  $scope.todoList = [];
+  $scope.goals = [];
+  $scope.todoInfo = [];
+  $scope.isChecked = {};
+  $scope.user = "";
   $scope.leftArray = myApp.buildArray('Left', 5);
   $scope.rightArray = myApp.buildArray('Right', 5);
   $scope.sortableOptions = {
     connectWith: '.connectedItemsExample .list'
   };
+  $scope.logout = function() {
+    mainFactory.logout();
+    $location.path('/');
+  }
   mainFactory.getAllTodos(function(data) {
     // console.log("todos: ", data);
     $scope.user = $routeParams.id;
@@ -349,7 +350,7 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
     if(tip != null){
       svg.call(tip);
     }
-    
+
 
 
     // console.log($scope.todoList);

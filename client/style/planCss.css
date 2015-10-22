@@ -1,5 +1,5 @@
 .section {
-  
+
   margin-bottom: 30px;
 }
 
@@ -27,7 +27,9 @@
   text-align: center;
   cursor: move;
 }
-
+.todo-info-btn {
+  display: block;
+}
 .goals {
   vertical-align: top;
   display: inline-block;
@@ -37,7 +39,17 @@
 .planlabel {
   font-size: 1.4em;
 }
-
+li.list-todos {
+  text-align: center;
+}
+#save-btn {
+  padding: 8px 13px 8px 13px;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  font-size: 1.4em;
+  background-color: #4DB8DB;
+}
 #global {
   margin-bottom: 50px;
 }

@@ -33,7 +33,11 @@
     width: 150px;
 }
 #add-plan-link {
-    background-color: black;
+    padding: 8px 13px 8px 13px;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.4em;
+    background-color: #4DB8DB;
 }
 #logoutgl-link {
     padding: 6px 3px;

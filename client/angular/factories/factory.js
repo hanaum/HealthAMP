@@ -116,6 +116,9 @@ myApp.factory("mainFactory", function($http){
     // console.log('grabbing current user', currentUser);
     callback(currentUser);
   }
+  factory.logout = function(callback) {
+    currentUser = null;
+  }
 
 	return factory;
 
