@@ -2,7 +2,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 	$scope.login = function(){
 
 		mainFactory.login($scope.user, function(data){
-      // console.log('nc', data);
+      console.log('nc', data);
 			if(data.status===1){
 				// console.log("data: ", data.results._id);
                 $('body').removeClass('modal-open');
@@ -40,27 +40,34 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	$scope.register = function(){
         // console.log($scope.reg);
 		if($scope.reg.age<=10){
+      console.log("AGE ERROR")
 			errors+=1
 			errorlist.push("You must be at least 10 years old to register");
 		}
-		if($scope.reg.name.length<=3){
+		if($scope.reg.name.length<3){
+      console.log("NAME LENGTH ERROR")
 			errors+=1;
 			errorlist.push("Name must be at least 3 characters long");
 		}
 		if($scope.reg.password.length<5){
+      console.log("PASS LENGTH")
 			errors+=1;
 			errorlist.push("Password must be at least 5 characters long");
 		}
 		if($scope.reg.password!=$scope.reg.passwordconfirm){
+      console.log("PASS NO MATCH")
 			errors+=1;
 			errorlist.push("Passwords don't match");
 		}
 		if($scope.reg.weight<=30){
+      console.log("WEIGHT ERROR")
 			errors+=1;
 			errorlist.push("Weight cannot be below 30lbs");
 		}
+    console.log("errors - ", errors)
 		if(errors==0){
 			mainFactory.register($scope.reg, function(data){
+        console.log("DATA - ", data)
 				if(data.status!=1){
 					// console.log('nc', data);
                     $('body').removeClass('modal-open');
@@ -339,8 +346,10 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    svg.call(tip);
+    if(tip != null){
+      svg.call(tip);
+    }
+    
 
 
     // console.log($scope.todoList);

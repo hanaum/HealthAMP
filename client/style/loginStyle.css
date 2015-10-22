@@ -1,5 +1,6 @@
 .errors {
   color: red;
+  display: block;
 }
 #login-modal .modal-dialog {
     width: 350px;
