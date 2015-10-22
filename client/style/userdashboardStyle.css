@@ -1,6 +1,58 @@
  #userInfo{
     width: 400px;
 }
+#globaldash-link {
+    padding: 8px 13px 8px 13px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 160px;
+    text-align: center;
+}
+#userdash-link {
+    padding: 8px 13px 8px 13px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 150px;
+}
+
+
+#logout-link {
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 150px;
+}
+#add-plan-link {
+    background-color: black;
+}
+#logoutgl-link {
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 150px;
+}
+#userpage-navbar {
+    margin-top: 3%;
+}
+#userpage-navbar li, #globaldash-navbar li {
+    text-align: center;
+}
+#globaldash-navbar {
+    margin-top: 3%;
+}
 .userInfospec {
     display: block;
 }

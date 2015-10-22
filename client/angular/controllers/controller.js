@@ -4,7 +4,7 @@ myApp.controller("loginController",function($scope, $location, mainFactory){
 		mainFactory.login($scope.user, function(data){
       // console.log('nc', data);
 			if(data.status===1){
-				console.log("data: ", data.results._id);
+				// console.log("data: ", data.results._id);
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 				$location.path('/userDashboard/' + data.results._id);
@@ -38,7 +38,7 @@ myApp.controller("registerController", function($scope, $location, mainFactory){
 	var errorlist = [];
 
 	$scope.register = function(){
-        console.log($scope.reg);
+        // console.log($scope.reg);
 		if($scope.reg.age<=10){
 			errors+=1
 			errorlist.push("You must be at least 10 years old to register");
@@ -92,10 +92,10 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
     //$scope.shareable = {};
     // $scope.$apply();
 
-    console.log("user id: ", $routeParams);
+    // console.log("user id: ", $routeParams);
     mainFactory.getOneUser($routeParams.id, function(data) {
         $scope.user = data;
-        // console.log("USER", $scope.user);
+        console.log("USER", $scope.user);
         $scope.changed = {};
         if($scope.user.plans.length == 0){
             $scope.message = "No Plans!";
@@ -131,7 +131,7 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
 
     }
     $scope.editPlan = function(plan) {
-        console.log("polanid: ", plan);
+        // console.log("polanid: ", plan);
 
         $location.path('/edit/'+plan._id);
     }
@@ -216,11 +216,11 @@ myApp.controller("todoController", function($scope, $location, $routeParams, mai
   $scope.addPlan = function() {
     $scope.newPlan.plans = $scope.plan;
     $scope.newPlan.user_id = $routeParams.id;
-    console.log("newPlan: ", $scope.newPlan);
+    // console.log("newPlan: ", $scope.newPlan);
 
     mainFactory.addPlan($scope.newPlan, function(data) {
         var todos = [];
-        console.log($scope.plan);
+        // console.log($scope.plan);
         for(x in $scope.plan){
             todos.push($scope.plan[x]._id);
           // console.log('nc:', $scope.newPlan.user_id, $routeParams.id);
@@ -264,7 +264,7 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
                 }
             }
             $scope.todoList = data;
-            console.log("PLAN", $scope.plan);
+            // console.log("PLAN", $scope.plan);
 
 
         })
@@ -272,7 +272,7 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
      $scope.seeTodoInfo = function(todo) {
     // console.log(todo);
         mainFactory.seeTodoInfo(todo._id, function(data) {
-            console.log("HERERER", data);
+            // console.log("HERERER", data);
             $scope.todoInfo = data;
         })
 
@@ -281,8 +281,8 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
     $scope.editPlan = function() {
         $scope.neweditPlan.plans = $scope.plan.todo;
         $scope.neweditPlan._id = $scope.plan._id;
-        console.log("asdfklasjf: ", $scope.neweditPlan);
-        console.log("plan: ", $scope.plan);
+        // console.log("asdfklasjf: ", $scope.neweditPlan);
+        // console.log("plan: ", $scope.plan);
          mainFactory.editPlan($scope.neweditPlan, function(data){
 
             $location.path('/userDashboard/' + $scope.plan._user);
@@ -301,7 +301,7 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
     mainFactory.getAllPlans(function(plans){
     	$scope.plans = plans;
         mainFactory.getAllTodos(function(todos){
-            console.log("DATA", todos);
+            // console.log("DATA", todos);
             $scope.todoList = todos;
             for(index in $scope.todoList){
                 data.push({letter: index, title: $scope.todoList[index].title, count: $scope.todoList[index].count});
@@ -343,9 +343,9 @@ myApp.controller("globalDashboardController", function($scope, mainFactory) {
     svg.call(tip);
 
 
-    console.log($scope.todoList);
+    // console.log($scope.todoList);
 
-    console.log(data);
+    // console.log(data);
 
       x.domain(data.map(function(d) { return d.letter; }));
       y.domain([0, d3.max(data, function(d) { return d.count; })]);

@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/userDashboard/{{user}}">Go Back</a></li>
-        <li><a href="#/logout">Logout</a></li>
+        <li><a id="logout-link" href="#/logout">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -30,7 +30,7 @@
       <p >{{goal.title}}          <input type="checkbox" ng-model="isChecked[goal._id].checked" ng-click="updatePlan(goal)"></p>
     </div>
     </div>
-    
+
     <div class="col-sm-offset-2 col-sm-4">
         <h2>My Plan</h2>
       <ul ui-sortable="sortableOptions" ng-model="plan" class="list">

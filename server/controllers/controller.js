@@ -6,9 +6,9 @@ var Goal = mongoose.model('Goal');
 var Plan = mongoose.model('Plan');
 
 genericController.register = function(req,res){
-  console.log('sc', req.body);
+  // console.log('sc', req.body);
 	User.findOne({email: req.body.email}, function(err, results){
-    console.log('sc', results);
+    // console.log('sc', results);
 		if(results){
 			res.json({status: 1, message: "Email already taken"});
 		}
@@ -41,7 +41,7 @@ genericController.login = function(req,res){
 	})
 }
 genericController.addPlan = function(req, res) {
-    console.log(req.body.user_id);
+    // console.log(req.body.user_id);
     User.findOne({_id: req.body.user_id}, function(err, user) {
         var plan = new Plan({_user: req.body.user_id, title: req.body.title,
          description: req.body.description, todo: req.body.plans, share: false});
@@ -52,7 +52,7 @@ genericController.addPlan = function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("DATA: ", results)
+                    // console.log("DATA: ", results)
                     res.json(results);
                 }
             })
@@ -62,13 +62,13 @@ genericController.addPlan = function(req, res) {
 }
 
 genericController.getuserbyemail = function(req, res){
-	console.log(req.params.id);
+	// console.log(req.params.id);
 	User.findOne({email: req.params.id}).populate('plans')
 	.exec(function(err, user){
 		if(err){
 			console.log(err);
 		} else {
-			console.log("SERVER BY EMAIL", user);
+			// console.log("SERVER BY EMAIL", user);
 			res.json(user);
 		}
 	})
@@ -89,7 +89,7 @@ genericController.getAllTodos = function(req, res) {
         if (err) {
             console.log(err);
         } else {
-        	console.log("ALL TODOS", results);
+        	// console.log("ALL TODOS", results);
             res.json(results);
         }
     })
@@ -124,14 +124,11 @@ genericController.seeTodoInfo = function(req,res){
     })
 }
 genericController.removePlan = function(req, res){
-
-
-
-	console.log(req.body._id);
+	// console.log(req.body._id);
 	Plan.findOne({_id: req.body._id}, function(err, plan){
-		console.log(plan);
+		// console.log(plan);
 		for(x of plan.todo){
-			console.log("IN FOR LOOP", x);
+			// console.log("IN FOR LOOP", x);
 			Todo.update({_id: x._id}, {$inc: {count: -1}}, function(err, todo){
 
 			})
@@ -139,14 +136,14 @@ genericController.removePlan = function(req, res){
 	})
 	Plan.remove({_id: req.body._id}, function(err, p){
 		User.update({_id: req.body.user}, {$pull: {plans : req.body._id}}, function(err, user){
-			console.log("REMOVE PLAN", user);
+			// console.log("REMOVE PLAN", user);
 		})
 	})
 	res.end();
 }
 
 genericController.editplan = function(req, res){
-    console.log("EDIT PLAN", req.body);
+    // console.log("EDIT PLAN", req.body);
     Plan.findOne({_id: req.body._id}, function(err, plan){
         plan.title = req.body.title;
         plan.description = req.body.description;
@@ -162,9 +159,9 @@ genericController.editplan = function(req, res){
 }
 
 genericController.updateTodos = function(req, res){
-	console.log("UPDATE TODOS", req.body);
+	// console.log("UPDATE TODOS", req.body);
 	for(x in req.body){
-		console.log(req.body[x]);
+		// console.log(req.body[x]);
 
 		Todo.update({_id: req.body[x]}, {$inc: {count: 1}}, function(err, todo){
 			if(err){
@@ -178,7 +175,7 @@ genericController.updateTodos = function(req, res){
 }
 
 genericController.sharePlan = function(req, res){
-	console.log(req.body);
+	// console.log(req.body);
 	Plan.update({_id: req.body._id}, {share: req.body.checked}, function(err, plan){
 	})
 	res.end();

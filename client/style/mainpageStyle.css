@@ -32,10 +32,10 @@ ul li {
     background-color: white;
     color: #990000;
 }
-.button:hover #loginreg-btn.top {
+/*.button:hover #loginreg-btn.top {
     background-color: white;
     color: #990000;
-}
+}*/
 #main-nav-ul {
     display: inline-block;
     margin: 35px 0 0 0;
@@ -45,7 +45,7 @@ ul li {
 }
 #main-nav-bar {
     background-color: black;
-    height: 130px;
+    height: 100px;
 }
 #main-content-div {
     margin-top: 10%;

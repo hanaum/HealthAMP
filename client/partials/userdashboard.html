@@ -16,9 +16,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/globaldashboard">Global Dashboard</a></li>
-        <li><a href="#/logout">Logout</a></li>
+      <ul id="userpage-navbar" class="nav navbar-nav navbar-right">
+        <li><a id="globaldash-link" href="#/globaldashboard">Global Dashboard</a></li>
+        <li><a id="logout-link" href="#/logout">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -33,7 +33,7 @@
 </div>
 
 
-  <a style="font-size: 1.4em; color: red" href="/#plan/{{user._id}}">Add a Plan!</a>
+  <a id="add-plan-link" style="font-size: 1.4em; color: red" href="/#plan/{{user._id}}">Add a Plan!</a>
   <h1>Plans</h1>
 
   <table class='table table-hover'>

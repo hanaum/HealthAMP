@@ -6,14 +6,14 @@ myApp.factory("mainFactory", function($http){
 
 	factory.register = function(data, callback){
 		$http.post('/register', data).success(function(output){
-      console.log('nf', output);
+      // console.log('nf', output);
 			callback(output);
    		 });
 	};
 
 	factory.login = function(data, callback){
 		$http.post('/login', data).success(function(output){
-      console.log('nf', output);
+      // console.log('nf', output);
       if(output.status==1) {
         currentUser = output.results;
         callback(output);
@@ -31,7 +31,7 @@ myApp.factory("mainFactory", function($http){
   }
 
   factory.addPlan = function(data, callback) {
-    console.log("factory: ", data);
+    // console.log("factory: ", data);
     $http.post('/addPlan', data).success(function(output){
       callback(output);
     })
@@ -71,7 +71,7 @@ myApp.factory("mainFactory", function($http){
     })
   }
   factory.seeTodoInfo = function(info, callback) {
-    console.log("klsdfjs: ", info);
+    // console.log("klsdfjs: ", info);
     $http.get('/seeTodoInfo/'+ info).success(function(output){
       currentTodo = output;
       callback(currentTodo);
@@ -80,7 +80,7 @@ myApp.factory("mainFactory", function($http){
 
 
   factory.removePlan = function(info, callback){
-    console.log("FACTORY", info);
+    // console.log("FACTORY", info);
     $http.post('/removePlan', info).success(function(output){
       callback(output);
     })
