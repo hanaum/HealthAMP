@@ -22,8 +22,7 @@
     width: 150px;
 }
 
-
-#logout-link {
+#global-logout-link {
     padding: 6px 3px;
     font-size: 1.1em;
     color: white;
@@ -31,6 +30,17 @@
     border-radius: 3px;
     font-weight: bold;
     width: 150px;
+    border: none;
+}
+#user-logout-link {
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 150px;
+    border: none;
 }
 #add-plan-link {
     padding: 8px 13px 8px 13px;

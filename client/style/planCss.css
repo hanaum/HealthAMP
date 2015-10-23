@@ -13,7 +13,29 @@
 #plantitle {
   margin-right: 50px;
 }
-
+#plan-logout-link {
+    padding: 6px 3px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #990000;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 150px;
+    border: none;
+}
+#plan-navbar {
+  margin-top: 3%;
+}
+#go-back-link {
+  padding: 8px 13px 8px 13px;
+  font-size: 1.1em;
+  color: white;
+  background-color: #990000;
+  border-radius: 3px;
+  font-weight: bold;
+  width: 150px;
+  border: none;
+}
 .iteml {
   padding: 5px 10px;
   margin: 5px 0;

@@ -13,9 +13,9 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/userDashboard/{{user}}">Go Back</a></li>
-        <li><button id="logout-link" ng-click="logout()">Logout</button></li>
+      <ul id="plan-navbar" class="nav navbar-nav navbar-right">
+        <li><a id="go-back-link" href="#/userDashboard/{{user}}">Go Back</a></li>
+        <li><button id="plan-logout-link" ng-click="logout()">Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -29,6 +29,7 @@
       <div class="goals" ng-repeat="goal in goals" >
       <p >{{goal.title}}          <input type="checkbox" ng-model="isChecked[goal._id].checked" ng-click="updatePlan(goal)"></p>
     </div>
+    <h3>Drag and drop your own custom plan!</h3>
     </div>
 
     <div class="col-sm-offset-2 col-sm-4">

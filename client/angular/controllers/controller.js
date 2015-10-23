@@ -106,6 +106,10 @@ myApp.controller("userDashboardController", function($scope, $routeParams, $loca
         }
 
     })
+    $scope.logout = function() {
+      mainFactory.logout();
+      $location.path('/');
+    }
     $scope.removeClicked = function(plan) {
         $scope.remove = plan._id;
         $scope.plan._id = plan._id;
@@ -300,12 +304,15 @@ myApp.controller("editPlanController", function($scope, $routeParams, $location,
 
 });
 
-myApp.controller("globalDashboardController", function($scope, mainFactory) {
+myApp.controller("globalDashboardController", function($scope, $location, mainFactory) {
   	$scope.todoList = [];
   	$scope.plans = [];
     $scope.currentUser;
     var data = [];
-
+    $scope.logout = function() {
+      mainFactory.logout();
+      $location.path('/');
+    }
     mainFactory.getAllPlans(function(plans){
     	$scope.plans = plans;
         mainFactory.getAllTodos(function(todos){

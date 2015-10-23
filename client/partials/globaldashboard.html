@@ -19,7 +19,7 @@
       <ul id="globaldash-navbar" class="nav navbar-nav navbar-right">
         <li><a id="userdash-link" href="#/userDashboard/{{currentUser._id}}">Userdashboard</a></li>
         <li ng-if="user._id">
-          <a id="logoutgl-link" href="#/logout">Logout</a></li>
+          <li><button id="global-logout-link" ng-click="logout()">Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
