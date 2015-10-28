@@ -20,6 +20,7 @@ require('./config/mongoose.js');
 // this line requires and runs the code from our routes.js file and passes it app so that we can attach our routing rules to our express application!
 require('./config/routes.js')(app);
 
-app.listen(8000, function() {
-  console.log('cool stuff on: 8000');
-}); 
+var port = process.env.PORT || 8000;
+app.listen(port, function() {
+  console.log('cool stuff on: ' + port);
+});

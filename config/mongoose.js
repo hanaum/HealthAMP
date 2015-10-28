@@ -4,7 +4,7 @@ var fs = require('fs');
 //remember to change the database name
 // mongoose.connect('mongodb://localhost/health');
 // mongoose.connect('mongodb://ds055842.mongolab.com:55842/healthamp');
-mongoose.connect('mongodb://healthamp:healthamp123@ds055842.mongolab.com:55842/healthamp');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://healthamp:healthamp123@ds055842.mongolab.com:55842/healthamp');
 
 //loads all of the model files
 var models_path = __dirname + '/../server/models';
